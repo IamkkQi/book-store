@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="book-store-commons" />
+        <module name="book-store-dao" />
+        <module name="book-store-pojo" />
+        <module name="book-store-service" />
+        <module name="book-store-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="book-store-commons" target="1.7" />
+      <module name="book-store-dao" target="1.7" />
+      <module name="book-store-manage" target="1.7" />
+      <module name="book-store-parent" target="1.7" />
+      <module name="book-store-pojo" target="1.7" />
+      <module name="book-store-service" target="1.7" />
+      <module name="book-store-web" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

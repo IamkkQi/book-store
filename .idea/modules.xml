@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/book-store-commons/book-store-commons.iml" filepath="$PROJECT_DIR$/book-store-commons/book-store-commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-manage/book-store-dao/book-store-dao.iml" filepath="$PROJECT_DIR$/book-store-manage/book-store-dao/book-store-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-manage/book-store-manage.iml" filepath="$PROJECT_DIR$/book-store-manage/book-store-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-parent/book-store-parent.iml" filepath="$PROJECT_DIR$/book-store-parent/book-store-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-manage/book-store-pojo/book-store-pojo.iml" filepath="$PROJECT_DIR$/book-store-manage/book-store-pojo/book-store-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-manage/book-store-service/book-store-service.iml" filepath="$PROJECT_DIR$/book-store-manage/book-store-service/book-store-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-manage/book-store-web/book-store-web.iml" filepath="$PROJECT_DIR$/book-store-manage/book-store-web/book-store-web.iml" />
+    </modules>
+  </component>
+</project>

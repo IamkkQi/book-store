@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.book-store</groupId>
+        <artifactId>book-store-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.book-store</groupId>
+    <artifactId>book-store-manage</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>book-store-pojo</module>
+        <module>book-store-dao</module>
+        <module>book-store-service</module>
+        <module>book-store-web</module>
+    </modules>
+
+    <dependencies>
+        <!-- 项目公开模块，因为父类依赖此模块，所以父类下的所有子类会传递依赖 -->
+        <dependency>
+            <groupId>com.book-store</groupId>
+            <artifactId>book-store-commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+</project>

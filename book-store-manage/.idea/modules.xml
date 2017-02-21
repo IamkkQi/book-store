@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/book-store-dao/book-store-dao.iml" filepath="$PROJECT_DIR$/book-store-dao/book-store-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-manage.iml" filepath="$PROJECT_DIR$/book-store-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-pojo/book-store-pojo.iml" filepath="$PROJECT_DIR$/book-store-pojo/book-store-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-service/book-store-service.iml" filepath="$PROJECT_DIR$/book-store-service/book-store-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-web/book-store-web.iml" filepath="$PROJECT_DIR$/book-store-web/book-store-web.iml" />
+    </modules>
+  </component>
+</project>
