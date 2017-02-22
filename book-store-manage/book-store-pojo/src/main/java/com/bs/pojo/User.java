@@ -1,4 +1,4 @@
-package com.book.qkk.pojo;
+package com.bs.pojo;
 
 import javax.persistence.*;
 import java.io.Serializable;
