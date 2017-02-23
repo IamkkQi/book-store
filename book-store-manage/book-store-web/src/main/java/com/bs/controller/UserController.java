@@ -25,6 +25,6 @@ public class UserController {
         for (User user : users) {
             System.out.println(user);
         }
-        return "index";
+        return "login";
     }
 }
