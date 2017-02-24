@@ -2,6 +2,8 @@ package com.bs.controller;
 
 import com.bs.pojo.User;
 import com.bs.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,6 +20,8 @@ public class UserController {
 
     @Resource
     private UserService userService;
+
+    private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping("test")
     public String test() {
