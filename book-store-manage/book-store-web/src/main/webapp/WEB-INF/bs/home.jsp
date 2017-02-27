@@ -22,7 +22,7 @@
         .bg {
             width: 100%;
             height: 100%;
-            background: url(${bsw}/static/img/shu-010.jpg) no-repeat bottom center;
+            background: url(${bsw}/static/img/001-bg.jpg) no-repeat bottom center;
             background-size: cover;
         }
     </style>
