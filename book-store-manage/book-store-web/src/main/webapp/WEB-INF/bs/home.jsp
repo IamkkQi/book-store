@@ -7,50 +7,27 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="include/taglib.jsp"%>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-    <title>首页</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="${bsw}/static/bootstrap-3.3.7/css/bootstrap.min.css">
-    <script src="${bsw}/static/js/jquery-1.9.1.js"></script>
-    <style type="text/css">
-        html, body {
-            width:100%;
-            height:100%;
-        }
-        .bg {
-            width: 100%;
-            height: 100%;
-            background: url(${bsw}/static/img/001-bg.jpg) no-repeat bottom center;
-            background-size: cover;
-        }
-    </style>
+    <title>Home</title>
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
-    <nav class="navbar navbar-fixed-top my-navbar" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#example-navbar-collapse">
-                    <span class="sr-only">切换导航</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">首页</a>
-            </div>
-            <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">iOS</a></li>
-                    <li><a href="#">SVN</a></li>
-                    <li>
-                        <a href="#">JAVA</a>
-                    </li>
-                </ul>
-            </div>
+    <div class="search">
+        <i> </i>
+        <div class="s-bar">
+            <form>
+                <input type="text" value="Search Template" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Template';}">
+                <input type="submit"  value="Search"/>
+            </form>
         </div>
-    </nav>
-    <div class="bg"></div>
+
+    </div>
+    <div class="copyright">
+        <p>2017 &copy Flat Search Box All rights reserved | Template by  <a href="#" target="_blank">  W3layouts </a></p>
+    </div>
 </body>
 </html>
