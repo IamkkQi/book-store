@@ -16,8 +16,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
+
     <div class="search">
-        <i> </i>
+        <i></i>
         <div class="s-bar">
             <form>
                 <input type="text" value="Search Template" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Template';}">
@@ -25,9 +26,10 @@
             </form>
         </div>
 
+
     </div>
     <div class="copyright">
-        <p>2017 &copy Flat Search Box All rights reserved | Template by  <a href="#" target="_blank">  W3layouts </a></p>
+        <p>2017 &copy Book Store | Author  <a href="#" target="_blank">  Kay </a></p>
     </div>
 </body>
 </html>

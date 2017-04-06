@@ -18,12 +18,12 @@ public class User implements Serializable {
     private String nickName; // 昵称
     private String imgSrc; // 头像
     private String tel; // 手机号
-    private int gender; // 性别 1-男 2-女 0-未知
+    private Integer gender; // 性别 1-男 2-女 0-未知
     private Date createTime; // 创建时间
     private Date updateTime; // 更新时间
-    private int isDel = 0; // 是否删除 0-未删除 1-已删除
+    private Integer isDel = 0; // 是否删除 0-未删除 1-已删除
     private Date delTime; // 删除时间
-    private int status = 1; // 状态 默认1可用
+    private Integer status = 1; // 状态 默认1可用
     private Date birthDate; // 出生日期
     private String email; // 电子邮箱
     private String address; // 地址
@@ -78,11 +78,11 @@ public class User implements Serializable {
         this.tel = tel;
     }
 
-    public int getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 
@@ -102,11 +102,11 @@ public class User implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public int getIsDel() {
+    public Integer getIsDel() {
         return isDel;
     }
 
-    public void setIsDel(int isDel) {
+    public void setIsDel(Integer isDel) {
         this.isDel = isDel;
     }
 
@@ -118,11 +118,11 @@ public class User implements Serializable {
         this.delTime = delTime;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -147,6 +147,27 @@ public class User implements Serializable {
     }
 
     public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public User() {
+    }
+
+    public User(Long id, String userName, String password, String nickName, String imgSrc, String tel, Integer gender, Date createTime, Date updateTime, Integer isDel, Date delTime, Integer status, Date birthDate, String email, String address) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.nickName = nickName;
+        this.imgSrc = imgSrc;
+        this.tel = tel;
+        this.gender = gender;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.isDel = isDel;
+        this.delTime = delTime;
+        this.status = status;
+        this.birthDate = birthDate;
+        this.email = email;
         this.address = address;
     }
 
