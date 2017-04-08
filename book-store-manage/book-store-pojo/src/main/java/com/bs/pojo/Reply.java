@@ -7,27 +7,27 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 图书评价表
+ * 留言回复
  * Created by qkk on 2017/4/8.
  */
-public class Comment implements Serializable {
+public class Reply implements Serializable {
 
     private Long id;
-    // 图书id
-    private Long bookId;
     // 用户id
     private Long userId;
+    // 留言类型
+    private Integer replyType;
+    // 留言主题
+    private String replyTitle;
+    // 留言内容
+    private String replyContent;
     // 创建时间
     private Date createTime;
-    // 评价内容
-    private String content;
-    // 审核标志 0-未通过 1-已通过
-    private Integer status;
-    // 更新实践
+    // 更新时间
     private Date updateTime;
     // 删除时间
     private Date deleteTime;
-    // 是否删除
+    // 删除时间
     private Integer isDel = 0;
 
     @Id
@@ -40,14 +40,6 @@ public class Comment implements Serializable {
         this.id = id;
     }
 
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
-    }
-
     public Long getUserId() {
         return userId;
     }
@@ -56,28 +48,36 @@ public class Comment implements Serializable {
         this.userId = userId;
     }
 
+    public Integer getReplyType() {
+        return replyType;
+    }
+
+    public void setReplyType(Integer replyType) {
+        this.replyType = replyType;
+    }
+
+    public String getReplyTitle() {
+        return replyTitle;
+    }
+
+    public void setReplyTitle(String replyTitle) {
+        this.replyTitle = replyTitle;
+    }
+
+    public String getReplyContent() {
+        return replyContent;
+    }
+
+    public void setReplyContent(String replyContent) {
+        this.replyContent = replyContent;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Date getUpdateTime() {
@@ -106,13 +106,13 @@ public class Comment implements Serializable {
 
     @Override
     public String toString() {
-        return "Comment{" +
+        return "Reply{" +
                 "id=" + id +
-                ", bookId=" + bookId +
                 ", userId=" + userId +
+                ", replyType=" + replyType +
+                ", replyTitle='" + replyTitle + '\'' +
+                ", replyContent='" + replyContent + '\'' +
                 ", createTime=" + createTime +
-                ", content='" + content + '\'' +
-                ", status=" + status +
                 ", updateTime=" + updateTime +
                 ", deleteTime=" + deleteTime +
                 ", isDel=" + isDel +

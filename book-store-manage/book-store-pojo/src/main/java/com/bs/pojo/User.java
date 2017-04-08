@@ -27,6 +27,9 @@ public class User implements Serializable {
     private Date birthDate; // 出生日期
     private String email; // 电子邮箱
     private String address; // 地址
+    private Integer loginStatus; // 登录状态
+    private Date lastAccessTime; // 最后访问时间
+    private String userIp; // 用户ip
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -150,25 +153,28 @@ public class User implements Serializable {
         this.address = address;
     }
 
-    public User() {
+    public Integer getLoginStatus() {
+        return loginStatus;
     }
 
-    public User(Long id, String userName, String password, String nickName, String imgSrc, String tel, Integer gender, Date createTime, Date updateTime, Integer isDel, Date delTime, Integer status, Date birthDate, String email, String address) {
-        this.id = id;
-        this.userName = userName;
-        this.password = password;
-        this.nickName = nickName;
-        this.imgSrc = imgSrc;
-        this.tel = tel;
-        this.gender = gender;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.isDel = isDel;
-        this.delTime = delTime;
-        this.status = status;
-        this.birthDate = birthDate;
-        this.email = email;
-        this.address = address;
+    public void setLoginStatus(Integer loginStatus) {
+        this.loginStatus = loginStatus;
+    }
+
+    public Date getLastAccessTime() {
+        return lastAccessTime;
+    }
+
+    public void setLastAccessTime(Date lastAccessTime) {
+        this.lastAccessTime = lastAccessTime;
+    }
+
+    public String getUserIp() {
+        return userIp;
+    }
+
+    public void setUserIp(String userIp) {
+        this.userIp = userIp;
     }
 
     @Override
@@ -189,6 +195,9 @@ public class User implements Serializable {
                 ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
+                ", loginStatus=" + loginStatus +
+                ", lastAccessTime=" + lastAccessTime +
+                ", userIp='" + userIp + '\'' +
                 '}';
     }
 }
