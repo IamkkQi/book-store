@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/book-store-manage/book-store-admin.iml" filepath="$PROJECT_DIR$/book-store-manage/book-store-admin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/book-store-manage/book-store-backstage.iml" filepath="$PROJECT_DIR$/book-store-manage/book-store-backstage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-store-manage/book-store-admin/book-store-admin.iml" filepath="$PROJECT_DIR$/book-store-manage/book-store-admin/book-store-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/book-store-commons/book-store-commons.iml" filepath="$PROJECT_DIR$/book-store-commons/book-store-commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/book-store-manage/book-store-dao/book-store-dao.iml" filepath="$PROJECT_DIR$/book-store-manage/book-store-dao/book-store-dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/book-store-manage/book-store-manage.iml" filepath="$PROJECT_DIR$/book-store-manage/book-store-manage.iml" />

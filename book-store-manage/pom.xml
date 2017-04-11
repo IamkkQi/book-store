@@ -19,6 +19,7 @@
         <module>book-store-dao</module>
         <module>book-store-service</module>
         <module>book-store-web</module>
+        <module>book-store-admin</module>
     </modules>
 
     <dependencies>
