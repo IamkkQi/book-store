@@ -4,6 +4,9 @@
          xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="bs-admin" version="2.5">
   <display-name>Archetype Created Web Application</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
   <!-- OpenSessionInViewFilter -->
   <filter>
     <filter-name>SpringOpenSessionInViewFilter</filter-name>
