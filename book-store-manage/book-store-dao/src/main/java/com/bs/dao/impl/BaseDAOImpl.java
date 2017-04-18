@@ -37,7 +37,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
      * 获取当前可用session
      * @return 返回session
      */
-    private Session getSession() {
+    public Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
