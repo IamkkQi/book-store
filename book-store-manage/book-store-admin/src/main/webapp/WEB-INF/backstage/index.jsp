@@ -175,6 +175,20 @@
             <!-- 菜单列表 -->
             <ul class="sidebar-menu">
                 <li class="header">主菜单</li>
+                <c:forEach items="${menus}" var="menu">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i>
+                            <span>${menu.menuName}</span>
+                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <c:forEach items="${menus.twoMenus}" var="tm">
+                                <li><a href="${tm.url}" target="main-content"><i class="fa fa-circle-o"></i>${tm.menuName}</a></li>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                </c:forEach>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-dashboard"></i>
@@ -182,7 +196,7 @@
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="${backstage}/admin/login"><i class="fa fa-circle-o"></i>二级菜单1</a></li>
+                        <li><a href="${backstage}/admin/login" target="main-content"><i class="fa fa-circle-o"></i>二级菜单1</a></li>
                         <li><a href="#"><i class="fa fa-circle-o"></i>二级菜单1</a></li>
                     </ul>
                 </li>
@@ -240,46 +254,12 @@
 
     <!-- ---------------------------------------------------------------- -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Boxed Layout
-                <small>Blank example to the boxed layout</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Layout</a></li>
-                <li class="active">Boxed</li>
-            </ol>
-        </section>
-
         <!-- 主内容 -->
         <section class="content">
+            <iframe id="main-content" name="main-content" style="overflow:visible;" scrolling="yes" frameborder="no" height="100%" width="100%">
 
-            <!-- Default box -->
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Title</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                            <i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    Start creating your amazing application!
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    Footer
-                </div>
-                <!-- /.box-footer-->
-            </div>
-            <!-- /.box -->
+            </iframe>
         </section>
-        <!-- /.content -->
     </div>
 
     <!-- 页脚 -->

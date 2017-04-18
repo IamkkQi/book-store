@@ -1,13 +1,13 @@
 package com.bs.pojo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by qkk on 2017/4/10.
  */
+@Entity
+@Table(name = "bs_menu")
 public class Menu implements Serializable {
     private Long id;
     // 菜单名称
@@ -22,6 +22,8 @@ public class Menu implements Serializable {
     private String url;
     // 名称拼音
     private String menuPinYin;
+    // 排序
+    private Integer sort;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -81,6 +83,14 @@ public class Menu implements Serializable {
         this.menuPinYin = menuPinYin;
     }
 
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
     @Override
     public String toString() {
         return "Menu{" +
@@ -91,6 +101,7 @@ public class Menu implements Serializable {
                 ", eventType=" + eventType +
                 ", url='" + url + '\'' +
                 ", menuPinYin='" + menuPinYin + '\'' +
+                ", sort=" + sort +
                 '}';
     }
 }

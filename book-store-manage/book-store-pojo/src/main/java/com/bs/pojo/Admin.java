@@ -1,8 +1,6 @@
 package com.bs.pojo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,6 +8,8 @@ import java.util.Date;
  * 管理员
  * Created by qkk on 2017/4/10.
  */
+@Entity
+@Table(name = "bs_admin")
 public class Admin implements Serializable {
     private Long id;
     // 用户名

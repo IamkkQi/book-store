@@ -1,14 +1,14 @@
 package com.bs.pojo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * 全国城市
  * Created by qkk on 2017/4/8.
  */
+@Entity
+@Table(name = "bs_city")
 public class City implements Serializable {
 
     private Long id;

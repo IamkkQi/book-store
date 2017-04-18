@@ -1,8 +1,6 @@
 package com.bs.pojo;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,7 +8,9 @@ import java.util.Date;
 /**
  * Created by qkk on 2017/4/10.
  */
-public class ShoppingCart implements Serializable {
+@Entity
+@Table(name = "bs_cart")
+public class Cart implements Serializable {
 
     private Long id;
     // 用户ID
