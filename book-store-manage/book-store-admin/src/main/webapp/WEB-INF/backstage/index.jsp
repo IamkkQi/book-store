@@ -178,65 +178,6 @@
                         </ul>
                     </li>
                 </c:forEach>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i>
-                        <span>菜单1</span>
-                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="${backstage}/admin/login" target="main-content"><i class="fa fa-circle-o"></i>二级菜单1</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i>二级菜单1</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-files-o"></i>
-                        <span>菜单2</span>
-                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单2</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单2</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单2</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单2</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-th"></i> <span>菜单3</span>
-                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                    </a>
-                </li>
-
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-pie-chart"></i>
-                        <span>菜单4</span>
-                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单4</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单4</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单4</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单4</a></li>
-                    </ul>
-                </li>
-
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-pie-chart"></i>
-                        <span>菜单5</span>
-                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单5</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单5</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单5</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 二级菜单5</a></li>
-                    </ul>
-                </li>
             </ul>
         </section>
     </aside>
