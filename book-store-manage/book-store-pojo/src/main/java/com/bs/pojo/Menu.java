@@ -24,6 +24,8 @@ public class Menu implements Serializable {
     private String menuPinYin;
     // 排序
     private Integer sort;
+    // 图标
+    private String icon;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -91,6 +93,14 @@ public class Menu implements Serializable {
         this.sort = sort;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
     @Override
     public String toString() {
         return "Menu{" +
@@ -102,6 +112,7 @@ public class Menu implements Serializable {
                 ", url='" + url + '\'' +
                 ", menuPinYin='" + menuPinYin + '\'' +
                 ", sort=" + sort +
+                ", icon='" + icon + '\'' +
                 '}';
     }
 }

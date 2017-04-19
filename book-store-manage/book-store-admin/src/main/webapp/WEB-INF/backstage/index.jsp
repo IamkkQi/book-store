@@ -161,30 +161,19 @@
     <!-- 左侧菜单 -->
     <aside class="main-sidebar">
         <section class="sidebar">
-            <!-- 搜索 -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-            </form>
-
-
             <!-- 菜单列表 -->
             <ul class="sidebar-menu">
                 <li class="header">主菜单</li>
                 <c:forEach items="${menus}" var="menu">
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-dashboard"></i>
+                            <i class="${menu.icon}"></i>
                             <span>${menu.menuName}</span>
                             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                         </a>
                         <ul class="treeview-menu">
-                            <c:forEach items="${menus.twoMenus}" var="tm">
-                                <li><a href="${tm.url}" target="main-content"><i class="fa fa-circle-o"></i>${tm.menuName}</a></li>
+                            <c:forEach items="${menu.twoMenus}" var="tm">
+                                <li><a href="${tm.url}" target="main-content"><i class="${tm.icon}"></i>${tm.menuName}</a></li>
                             </c:forEach>
                         </ul>
                     </li>

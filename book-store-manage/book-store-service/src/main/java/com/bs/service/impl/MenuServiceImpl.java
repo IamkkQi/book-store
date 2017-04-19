@@ -18,13 +18,13 @@ import java.util.Map;
 public class MenuServiceImpl extends BaseDAOImpl<Menu> implements MenuService {
     @Override
     public List<Map<String, Object>> listOneMenu() {
-        String sql = "SELECT id,menuName,level,pid,eventType,url,menuPinYin,sort FROM bs_menu WHERE level = 1";
+        String sql = "SELECT m.id,m.menuName,m.level,pid,m.eventType,m.url,m.menuPinYin,m.sort,m.icon FROM bs_menu m WHERE m.level = 1";
         return getSession().createSQLQuery(sql).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
     }
 
     @Override
     public List<Map<String, Object>> listMenuByPid(Long pid) {
-        String sql = "SELECT id,menuName,level,pid,eventType,url,menuPinYin,sort FROM bs_menu WHERE pid = ? AND level = 2";
-        return getSession().createQuery(sql).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).setParameter(0, pid).list();
+        String sql = "SELECT m.id,m.menuName,m.level,m.pid,m.eventType,m.url,m.menuPinYin,m.sort,m.icon FROM bs_menu m WHERE m.pid = ? AND m.level = 2";
+        return getSession().createSQLQuery(sql).setParameter(0, pid).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
     }
 }

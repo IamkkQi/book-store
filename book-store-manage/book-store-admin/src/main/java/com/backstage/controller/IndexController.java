@@ -28,7 +28,7 @@ public class IndexController {
         for (Map<String, Object> menu : menus) {
             List<Map<String, Object>> twoMenus = menuService.listMenuByPid(Long.valueOf(menu.get("id").toString()));
             if (twoMenus != null && twoMenus.size() > 0) {
-                menu.put("towMenu", twoMenus);
+                menu.put("twoMenus", twoMenus);
             }
         }
         model.addAttribute("menus", menus);
