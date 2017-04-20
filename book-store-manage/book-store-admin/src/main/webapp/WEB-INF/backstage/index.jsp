@@ -16,11 +16,6 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <jsp:include page="include/css.jsp"></jsp:include>
     <link href="${backstage}/static/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="${backstage}/static/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
-    <link href="${backstage}/static/adminLTE-2.3.11/css/AdminLTE.min.css" rel="stylesheet" type="text/css">
-    <link href="${backstage}/static/adminLTE-2.3.11/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css">
-
-
 </head>
 <body class="hold-transition skin-blue layout-boxed sidebar-mini">
 <div class="wrapper">
@@ -183,10 +178,9 @@
     </aside>
 
     <!-- ---------------------------------------------------------------- -->
-    <div class="content-wrapper">
-        <!-- 主内容 -->
+    <div class="content-wrapper" style="height: 100%"><!-- 主内容 -->
         <section class="content">
-            <iframe id="main-content" name="main-content" style="overflow:visible;" scrolling="yes" frameborder="no" height="100%" width="100%">
+            <iframe class="main-content" name="main-content" style="overflow:inherit;" scrolling="yes" frameborder="0" height="100%" width="100%">
 
             </iframe>
         </section>
@@ -397,11 +391,7 @@
 </body>
 
 <jsp:include page="include/javascript.jsp"></jsp:include>
-<script src="${backstage}/static/adminLTE-2.3.11/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="${backstage}/static/adminLTE-2.3.11/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
-<script src="${backstage}/static/adminLTE-2.3.11/js/app.min.js" type="text/javascript"></script>
-<script src="${backstage}/static/adminLTE-2.3.11/js/demo.js" type="text/javascript"></script>
 <script type="text/javascript">
-
+    $(".main-content").height($(window).height() - 55);
 </script>
 </html>

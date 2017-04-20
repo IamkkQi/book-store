@@ -26,7 +26,7 @@ public class User implements Serializable {
     private Integer status = 1; // 状态 默认1可用
     private Date birthDate; // 出生日期
     private String email; // 电子邮箱
-    private String address; // 地址
+    private String address; // 籍贯
     private Integer loginStatus; // 登录状态
     private Date lastAccessTime; // 最后访问时间
     private String userIp; // 用户ip
