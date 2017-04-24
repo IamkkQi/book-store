@@ -53,13 +53,13 @@ public class DateFormatUtil {
 	 * 
 	 * FastDateFormat.getInstance()已经做了缓存，不会每次创建对象，但直接使用对象仍然能减少在缓存中的查找.
 	 */
-	public static Date pareDate(@NotNull String pattern, @NotNull String dateString) throws ParseException {
+	public static Date parseDate(@NotNull String pattern, @NotNull String dateString) throws ParseException {
 		return FastDateFormat.getInstance(pattern).parse(dateString);
 	}
 
 	/**
 	 * 格式化日期, 仅用于pattern不固定的情况.
-	 * 
+	 *
 	 * 否则直接使用本类中封装好的FastDateFormat.
 	 * 
 	 * FastDateFormat.getInstance()已经做了缓存，不会每次创建对象，但直接使用对象仍然能减少在缓存中的查找.

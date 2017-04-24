@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.lang.reflect.ParameterizedType;
@@ -16,6 +17,7 @@ import java.util.List;
  * 基础dao实现类
  * Created by qkk on 2017/2/20.
  */
+@Transactional
 public class BaseDAOImpl<T> implements BaseDAO<T> {
 
     private static Logger logger = LoggerFactory.getLogger(BaseDAOImpl.class);

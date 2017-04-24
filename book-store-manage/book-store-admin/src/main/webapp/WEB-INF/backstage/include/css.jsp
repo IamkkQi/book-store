@@ -11,3 +11,4 @@
 <link href="${backstage}/static/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
 <link href="${backstage}/static/adminLTE-2.3.11/css/AdminLTE.min.css" rel="stylesheet" type="text/css">
 <link href="${backstage}/static/adminLTE-2.3.11/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css">
+<link href="${backstage}/static/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">

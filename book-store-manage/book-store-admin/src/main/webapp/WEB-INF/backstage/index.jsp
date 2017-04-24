@@ -15,9 +15,11 @@
     <%-- 告诉浏览器响应屏幕宽度 --%>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <jsp:include page="include/css.jsp"></jsp:include>
-    <link href="${backstage}/static/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
-<body class="hold-transition skin-blue layout-boxed sidebar-mini">
+<style type="text/css">
+
+</style>
+<body class="hold-transition skin-blue fixed sidebar-mini">
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
@@ -392,6 +394,6 @@
 
 <jsp:include page="include/javascript.jsp"></jsp:include>
 <script type="text/javascript">
-    $(".main-content").height($(window).height() - 55);
+    $(".main-content").height($(window).height());
 </script>
 </html>

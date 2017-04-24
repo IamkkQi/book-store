@@ -15,11 +15,11 @@ public interface UserService extends BaseDAO<User> {
      * @param pageNum
      * @return
      */
-    List<User> listAllUsers(Integer pageNum);
+    List<User> listAllUsers(Integer pageNum, String keys);
 
     /**
      * 分页用户的总页数
      * @return
      */
-    int countAllUsers();
+    int countAllUsers(String keys);
 }
