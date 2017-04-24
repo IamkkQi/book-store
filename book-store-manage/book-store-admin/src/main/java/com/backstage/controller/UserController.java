@@ -4,9 +4,11 @@ import com.bs.bean.PageBean;
 import com.bs.constants.Constants;
 import com.bs.pojo.User;
 import com.bs.service.UserService;
+import com.bs.utils.string.StringUtil;
 import com.bs.utils.time.DateFormatUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,4 +70,6 @@ public class UserController {
         userService.update(user);
         return "redirect:/admin/user/list";
     }
+
+
 }

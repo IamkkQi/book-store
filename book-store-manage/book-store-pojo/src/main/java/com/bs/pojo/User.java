@@ -30,6 +30,7 @@ public class User implements Serializable {
     private Integer loginStatus; // 登录状态
     private Date lastAccessTime; // 最后访问时间
     private String userIp; // 用户ip
+    private String salt; // 盐
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -177,6 +178,14 @@ public class User implements Serializable {
         this.userIp = userIp;
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -198,6 +207,7 @@ public class User implements Serializable {
                 ", loginStatus=" + loginStatus +
                 ", lastAccessTime=" + lastAccessTime +
                 ", userIp='" + userIp + '\'' +
+                ", salt='" + salt + '\'' +
                 '}';
     }
 }

@@ -22,4 +22,11 @@ public interface UserService extends BaseDAO<User> {
      * @return
      */
     int countAllUsers(String keys);
+
+    /**
+     * 根据用户名和密码查询用户
+     * @param user
+     * @return
+     */
+    User findUserByTelAndPsw(User user);
 }
