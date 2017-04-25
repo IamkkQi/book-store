@@ -59,7 +59,7 @@ public class IndexController {
 
     /**
      * 用户登录
-     * @param user
+     * @param user 用户
      * @param isRTel 是否记住手机号 前端checkbox的值
      * @param request
      * @param attributes

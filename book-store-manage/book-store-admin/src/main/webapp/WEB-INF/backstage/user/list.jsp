@@ -90,7 +90,7 @@
                                                 <a href="javascript:;" data-uid="${user.id}" data-status="0" class="disUser">禁用</a>
                                             </c:if>
                                              |
-                                            <a href="javascript:;" data-uid="${user.id}" class="deleteUser">删除</a></td>
+                                            <a href="javascript:;" data-uid="${user.id}" class="btn btn-danger btn-xs deleteUser">删除</a></td>
                                     </tr>
                                 </c:forEach>
                                 <tr>
@@ -108,7 +108,7 @@
         </div>
     </section>
 
-    <%--<!-- 添加用户 -->
+    <!-- 添加用户 -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -205,7 +205,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
     <%-- 删除用户 --%>
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="top: 30%;">

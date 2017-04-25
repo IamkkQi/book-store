@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.form-login {
+    float: none;
+    display: block;
+    margin: auto;
+}
+.input-group {
+    margin-bottom: 10px;
+}
