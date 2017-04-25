@@ -150,7 +150,7 @@
                             </div>
                         </div>
 
-                        &lt;%&ndash;<div class="form-group">
+                        <div class="form-group">
                             <label class="col-sm-2 control-label">添加时间:</label>
 
                             <div class="col-sm-10">
@@ -161,7 +161,7 @@
                                     <input type="text" readonly name="createTime" class="form-control pull-right form_date-createTime">
                                 </div>
                             </div>
-                        </div>&ndash;%&gt;
+                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">出生日期:</label>
@@ -248,7 +248,7 @@
     </div>
 
     <!-- 修改用户 -->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <%--<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -330,7 +330,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 
 </body>
 <jsp:include page="${backstage}/WEB-INF/backstage/include/javascript.jsp"></jsp:include>

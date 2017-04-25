@@ -12,7 +12,7 @@
     <title></title>
 </head>
 <script type="text/javascript">
-    location.href = "${backstage}/admin/index"
+    location.href = "${backstage}/admin/loginUI"
 </script>
 <body>
 </body>

@@ -21,12 +21,12 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-6 col-md-4 form-login">
-                <form class="form-signin" action="/admin/login" method="post">
-                    <h2 class="form-signin-heading">用户登录</h2>
-                    <label for="userName" class="sr-only">用户名</label>
+                <form class="form-signin" action="/admin/login" method="post" id="uForm">
+                    <h2 class="form-signin-heading">书林网后台管理系统</h2>
+                    <label for="tel" class="sr-only">用户名</label>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" name="userName" id="userName" class="form-control input-lg" placeholder="用户名" required autofocus>
+                        <input type="text" maxlength="11" value="${tel}" name="tel" id="tel" class="form-control input-lg" placeholder="手机号" required autofocus>
                     </div>
 
                     <label for="password" class="sr-only">密码</label>
@@ -34,13 +34,13 @@
                         <span class="input-group-addon"><i class="fa fa-key fa-lg fa-fw" aria-hidden="true"></i></span>
                         <input type="password" name="password" id="password" class="form-control input-lg" placeholder="密码" required>
                     </div>
-                    <input type="hidden" name="isRTel" id="">
+                    <input type="hidden" name="isRTel" id="isRTelH">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" id="isRTel" value="">记住我
+                            <input type="checkbox" id="isRTel">记住我
                         </label>
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="button" id="btn-login">登录</button>
                 </form>
             </div>
         </div>
@@ -48,6 +48,49 @@
 </body>
 <jsp:include page="${backstage}/WEB-INF/backstage/include/javascript.jsp"></jsp:include>
 <script type="text/javascript">
+    $(function () {
+        // 判断手机号是否存在
+        if ("${tel}" != "") {
+            $("#isRTel").prop('checked', true);
+            $("#isRTelH").val(1);
+        }
+        // 清空密码
+        $("#password").val('');
 
+        var login_err = 1; // 登录错误次数
+        $("#btn-login").click(function(){
+            if(login_err >= 3) {
+                // 登录错误失败大于3次，验证码显示
+                $.get('${backstage}/admin/login/setVerifyCode', {}, function (data) {
+                    alert(data);
+                });
+
+            }
+            // 记住账户复选框
+            if($("#isRTel").prop('checked')) {
+                $('#isRTelH').val(1);
+            } else {
+                $('#isRTelH').val(0);
+            }
+
+            // 验证用户名和密码
+            $.post('${backstage}/admin/confirmUser', {"tel" : $.trim($("#tel").val()), "password" : $.trim($("#password").val())}, function (data) {
+                if (data == "yes") {
+                    $("#uForm").submit();
+                } else {
+                    // 登录错误加1
+                    login_err = login_err + 1;
+                }
+            });
+        });
+
+        // 绑定键盘按下事件
+        $(document).keypress(function(e) {
+            // 回车键事件
+            if(e.which == 13) {
+                $("#btn-login").click();
+            }
+        });
+    });
 </script>
 </html>
