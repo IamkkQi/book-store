@@ -21,8 +21,8 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-6 col-md-4 form-login">
-                <form class="form-signin" action="/admin/login" method="post" id="uForm">
-                    <h2 class="form-signin-heading">书林网后台管理系统</h2>
+                <form action="/admin/login" method="post" id="uForm">
+                    <h1>书林网后台管理系统</h1>
                     <label for="tel" class="sr-only">用户名</label>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i></span>
@@ -34,7 +34,12 @@
                         <span class="input-group-addon"><i class="fa fa-key fa-lg fa-fw" aria-hidden="true"></i></span>
                         <input type="password" name="password" id="password" class="form-control input-lg" placeholder="密码" required>
                     </div>
+                    <div class="input-group" style="display: none" id="login-codeImg">
+                        <input type="text" class="form-control input-lg input-code" style="width: 210px;" value="" placeholder="请输入验证码">
+                        <span class="login-codeImg"><img src="" alt="" id="codeImg"></span>
+                    </div>
                     <input type="hidden" name="isRTel" id="isRTelH">
+                    <input type="hidden" name="" class="code">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" id="isRTel">记住我
@@ -59,11 +64,17 @@
 
         var login_err = 1; // 登录错误次数
         $("#btn-login").click(function(){
+            // 如果验证码可见,判断验证码是否正确
+            if ($("#login-codeImg").is(':visible') && $('.input-code').val().toUpperCase() != $('.code').val().toUpperCase()) {
+                alert('验证码错误');
+                getVerifyCode();
+                return;
+            }
+
             if(login_err >= 3) {
                 // 登录错误失败大于3次，验证码显示
-                $.get('${backstage}/admin/login/setVerifyCode', {}, function (data) {
-                    alert(data);
-                });
+                $("#login-codeImg").show();
+                getVerifyCode();
 
             }
             // 记住账户复选框
@@ -76,6 +87,7 @@
             // 验证用户名和密码
             $.post('${backstage}/admin/confirmUser', {"tel" : $.trim($("#tel").val()), "password" : $.trim($("#password").val())}, function (data) {
                 if (data == "yes") {
+                    $("#login-codeImg").hide();
                     $("#uForm").submit();
                 } else {
                     // 登录错误加1
@@ -91,6 +103,20 @@
                 $("#btn-login").click();
             }
         });
+
+        // 点击验证码更换
+        $('.login-codeImg').click(function () {
+            getVerifyCode();
+        });
+
+        // 获取验证码
+        function getVerifyCode() {
+            $.get('${backstage}/admin/login/setVerifyCode', {}, function (data) {
+                $(".code").val(data);
+                $("#codeImg").prop("src", '${backstage}/admin/login/getVerifyCode?code=' + data + '&width=135&height=46')
+                $(".input-code").val('');
+            });
+        }
     });
 </script>
 </html>
