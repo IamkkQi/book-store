@@ -22,7 +22,10 @@
         <div class="row">
             <div class="col-xs-6 col-md-4 form-login">
                 <form action="/admin/login" method="post" id="uForm">
-                    <h1>书林网后台管理系统</h1>
+                    <div class="login-header-h1">
+                        <h1>书林网后台管理系统</h1>
+                    </div>
+
                     <label for="tel" class="sr-only">用户名</label>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i></span>
@@ -35,7 +38,7 @@
                         <input type="password" name="password" id="password" class="form-control input-lg" placeholder="密码" required>
                     </div>
                     <div class="input-group" style="display: none" id="login-codeImg">
-                        <input type="text" class="form-control input-lg input-code" style="width: 210px;" value="" placeholder="请输入验证码">
+                        <input type="text" class="form-control input-lg input-code" style="width: 225px;" value="" placeholder="请输入验证码">
                         <span class="login-codeImg"><img src="" alt="" id="codeImg"></span>
                     </div>
                     <input type="hidden" name="isRTel" id="isRTelH">
