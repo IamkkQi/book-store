@@ -162,4 +162,13 @@ public class IndexController {
         }
     }
 
+    /**
+     * 403页面
+     * @return
+     */
+    @RequestMapping("403")
+    public String err403() {
+        return "403";
+    }
+
 }

@@ -13,7 +13,7 @@ import java.util.Date;
 public class TestTime {
     public static void main(String[] args) throws ParseException {
         String dateStr = "2017-03-03 20:19:00";
-        Date date = DateFormatUtil.pareDate(DateFormatUtil.PATTERN_DEFAULT_ON_SECOND, dateStr);
+        Date date = DateFormatUtil.parseDate(DateFormatUtil.PATTERN_DEFAULT_ON_SECOND, dateStr);
         System.out.println(date);
         System.out.println(DateFormatUtil.getDayBeforeOrAfter(date));
 

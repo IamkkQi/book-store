@@ -57,6 +57,11 @@
   <filter>
     <filter-name>shiroFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <!-- 将拦截的请求转发给shiro的FilterFactoryBean -->
+    <init-param>
+      <param-name>targetBeanName</param-name>
+      <param-value>shiroFilterFactory</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
     <filter-name>shiroFilter</filter-name>

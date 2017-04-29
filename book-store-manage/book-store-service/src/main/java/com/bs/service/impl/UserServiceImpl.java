@@ -44,4 +44,11 @@ public class UserServiceImpl extends BaseDAOImpl<User> implements UserService {
         String hql = "FROM User WHERE tel = ? AND password = ? AND status = 1";
         return (User) getSession().createQuery(hql).setParameter(0, user.getTel()).setParameter(1, StringUtil.getMD5(user.getPassword())).uniqueResult();
     }
+
+    @Override
+    public User findUserByTel(String tel) {
+        String hql = "FROM User WHERE tel = ? AND isDel = 0 AND status = 1 ";
+        return (User) getSession().createQuery(hql).setParameter(0, tel).uniqueResult();
+    }
+
 }

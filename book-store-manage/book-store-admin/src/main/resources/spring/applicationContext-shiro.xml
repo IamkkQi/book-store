@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <!-- 缓存管理 -->
+    <bean id="constrainedCacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean>
 
+    <!-- 自定义的realm -->
+    <bean id="shiroDBRealm" class="com.backstage.shiro.ShiroDBRealm"></bean>
 
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- 依赖自定义的realm -->
+        <property name="realm" ref="shiroDBRealm" />
+        <!-- 依赖缓存管理 -->
+        <property name="cacheManager" ref="constrainedCacheManager"/>
+    </bean>
+    <!-- shiro过滤器工厂 -->
+    <bean id="shiroFilterFactory" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- 依赖安全管理器 -->
+        <property name="securityManager" ref="securityManager" />
+        <!-- 默认登录页面 -->
+        <property name="loginUrl" value="/admin/loginUI" />
+        <!-- 权限认证成功 -->
+        <property name="successUrl" value="/admin/index" />
+        <!-- 没有权限要访问的页面 -->
+        <property name="unauthorizedUrl" value="/admin/403" />
+        <!-- 指定访问权限 -->
+        <property name="filterChainDefinitions">
+            <value>
+                /static/** = anon
+                /admin/loginUI = anon
+                /admin/login = anon
+                /admin/confirmUser = anon
+                /admin/setVerifyCode = anon
+                /admin/** = authc
+                /** = anon
+            </value>
+        </property>
+    </bean>
+
+    <!-- 开启权限注解功能 -->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <!-- 依赖安全管理器 -->
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
 </beans>
