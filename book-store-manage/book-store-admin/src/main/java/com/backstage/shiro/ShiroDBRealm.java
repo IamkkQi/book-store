@@ -1,6 +1,5 @@
 package com.backstage.shiro;
 
-import com.backstage.controller.IndexController;
 import com.bs.pojo.Role;
 import com.bs.pojo.User;
 import com.bs.service.RolePermissionService;
@@ -86,6 +85,7 @@ public class ShiroDBRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         // 获取用户名
         String userName = (String) authenticationToken.getPrincipal();
+        logger.info("----------------" + userName + ":认证----------------");
         // 查询用户
         User user = userService.findUserByTel(userName);
         if (user != null) {

@@ -12,13 +12,13 @@ import java.util.Date;
 @Table(name = "bs_category")
 public class Category implements Serializable {
     private Long id;
-    private String categoryNumber; // 图书类别好
+    private String categoryNumber; // 图书类别号
     private String categoryName; // 类别名称
     private Date createTime; // 创建时间
     private Date updateTime; // 更新时间
     private Date deleteTime; // 删除时间
     private Integer isDel = 0; // 是否删除
-    private Long parendId; // 上级类别
+    private Long parentId; // 上级类别
     private Integer level; // 级别
 
     @Id
@@ -79,12 +79,12 @@ public class Category implements Serializable {
         this.isDel = isDel;
     }
 
-    public Long getParendId() {
-        return parendId;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setParendId(Long parendId) {
-        this.parendId = parendId;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public Integer getLevel() {

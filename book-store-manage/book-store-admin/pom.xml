@@ -8,8 +8,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>book-store-admin</artifactId>
     <packaging>war</packaging>
-    <name>book-store-admin Maven Webapp</name>
-    <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

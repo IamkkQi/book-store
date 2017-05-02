@@ -2,7 +2,6 @@ package com.bs.utils.string;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.RandomUtils;
 
 /**
  * 字符串工具类

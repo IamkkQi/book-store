@@ -11,6 +11,10 @@ import java.util.Map;
  */
 public interface MenuService extends BaseDAO<Menu> {
 
+    /**
+     * 查询一级菜单
+     * @return
+     */
     List<Map<String, Object>> listOneMenu();
 
     /**

@@ -33,7 +33,8 @@
                 /admin/loginUI = anon
                 /admin/login = anon
                 /admin/confirmUser = anon
-                /admin/setVerifyCode = anon
+                /admin/login/setVerifyCode = anon
+                /admin/login/getVerifyCode = anon
                 /admin/** = authc
                 /** = anon
             </value>

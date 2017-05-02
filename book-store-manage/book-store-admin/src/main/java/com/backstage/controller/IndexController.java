@@ -6,6 +6,9 @@ import com.bs.service.MenuService;
 import com.bs.service.UserService;
 import com.bs.utils.VerifyCodeUtils;
 import com.bs.utils.string.StringUtil;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
@@ -54,7 +58,9 @@ public class IndexController {
      * @return
      */
     @RequestMapping("index")
-    public String index(Model model) {
+    public String index(Model model, HttpSession session) {
+        logger.info("----------------index----------------");
+        User user = (User) session.getAttribute("user");
         List<Map<String, Object>> menus = menuService.listOneMenu();
         for (Map<String, Object> menu : menus) {
             List<Map<String, Object>> twoMenus = menuService.listMenuByPid(Long.valueOf(menu.get("id").toString()));
@@ -63,6 +69,7 @@ public class IndexController {
             }
         }
         model.addAttribute("menus", menus);
+        model.addAttribute("user", user);
         return "index";
     }
 
@@ -87,11 +94,20 @@ public class IndexController {
      */
     @RequestMapping("login")
     public String login(User user, String isRTel, HttpServletRequest request, RedirectAttributes attributes, HttpServletResponse response) {
+        logger.info("-------------------login-------------------");
         User userDB = userService.findUserByTelAndPsw(user);
         if(userDB == null) {
             attributes.addFlashAttribute("err_msg", "用户名或密码错误");
-            return "redirect:/admin/login";
+            return "redirect:/admin/loginUI";
         } else {
+            // shiro认证登录
+            try {
+                SecurityUtils.getSubject().login(new UsernamePasswordToken(userDB.getTel(), userDB.getPassword()));
+            } catch (AuthenticationException e) {
+                e.printStackTrace();
+                attributes.addFlashAttribute("err_msg", "用户名或密码错误！");
+                return "redirect:/admin/loginUI";
+            }
             request.getSession().setAttribute("user", userDB);
             // 读取cookie
             Map<String, Cookie> cookieMap = CookieUtil.ReadCookieMap(request);
