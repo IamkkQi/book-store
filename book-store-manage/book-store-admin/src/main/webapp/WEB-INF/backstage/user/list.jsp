@@ -16,7 +16,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <jsp:include page="${backstage}/WEB-INF/backstage/include/css.jsp"></jsp:include>
     <link href="${backstage}/static/adminLTE-2.3.11/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
-
+    <jsp:include page="${backstage}/WEB-INF/backstage/include/javascript.jsp"></jsp:include>
 </head>
 <body>
     <section class="content-header">
@@ -333,7 +333,6 @@
     </div>--%>
 
 </body>
-<jsp:include page="${backstage}/WEB-INF/backstage/include/javascript.jsp"></jsp:include>
 <script src="${backstage}/static/adminLTE-2.3.11/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
 <script src="${backstage}/static/adminLTE-2.3.11/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
 <script src="${backstage}/static/distpicker/dist/distpicker.min.js" type="text/javascript"></script>

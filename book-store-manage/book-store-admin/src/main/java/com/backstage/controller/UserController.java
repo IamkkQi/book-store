@@ -54,7 +54,6 @@ public class UserController {
             user.setDelTime(new Date());
         }
         userService.update(user);
-        System.err.println(user);
         return "redirect:/admin/user/list";
     }
 
