@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50536
 File Encoding         : 65001
 
-Date: 2017-04-25 00:48:57
+Date: 2017-05-09 12:01:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,6 +44,61 @@ INSERT INTO `bs_menu` VALUES ('6', '角色管理', '2', '4', '2', null, null, nu
 INSERT INTO `bs_menu` VALUES ('7', '日志管理', '2', '4', '2', null, null, null, 'glyphicon glyphicon-list-alt');
 INSERT INTO `bs_menu` VALUES ('8', '图书列表', '2', '2', '2', '/admin/book/list', null, null, 'glyphicon glyphicon-book');
 INSERT INTO `bs_menu` VALUES ('9', '类别列表', '2', '3', '2', null, null, null, 'glyphicon glyphicon-th-large');
+
+-- ----------------------------
+-- Table structure for bs_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `bs_permission`;
+CREATE TABLE `bs_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `permissionName` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `parentId` int(11) DEFAULT NULL,
+  `createTime` datetime DEFAULT NULL,
+  `desp` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of bs_permission
+-- ----------------------------
+INSERT INTO `bs_permission` VALUES ('1', 'user:user', null, null, '2017-04-29 23:06:32', '用户管理');
+INSERT INTO `bs_permission` VALUES ('2', 'user:list', '/admin/user/list', '1', '2017-04-29 23:07:07', '用户列表');
+
+-- ----------------------------
+-- Table structure for bs_role
+-- ----------------------------
+DROP TABLE IF EXISTS `bs_role`;
+CREATE TABLE `bs_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `roleName` varchar(255) DEFAULT NULL,
+  `desp` varchar(255) DEFAULT NULL,
+  `type` tinyint(4) DEFAULT NULL,
+  `createTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of bs_role
+-- ----------------------------
+INSERT INTO `bs_role` VALUES ('1', 'admin', '超级管理员', '0', '2017-04-29 23:02:18');
+
+-- ----------------------------
+-- Table structure for bs_role_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `bs_role_permission`;
+CREATE TABLE `bs_role_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `roleId` int(11) DEFAULT NULL,
+  `permissionId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of bs_role_permission
+-- ----------------------------
+INSERT INTO `bs_role_permission` VALUES ('1', '1', '1');
+INSERT INTO `bs_role_permission` VALUES ('2', '1', '2');
 
 -- ----------------------------
 -- Table structure for bs_user
@@ -91,4 +146,20 @@ INSERT INTO `bs_user` VALUES ('13', '朱仝', '123445', '天满星', null, '1392
 INSERT INTO `bs_user` VALUES ('14', '鲁智深', '123342', '天孤星', null, '13876562112', '1', '2017-04-19 21:11:37', '2017-04-24 11:29:08', '0', null, '1', null, null, null, null, null, null, null);
 INSERT INTO `bs_user` VALUES ('15', '武松', '1231233', '天伤星', null, '13520863123', '1', '2017-04-19 21:12:08', '2017-04-19 21:12:10', '1', '2017-04-24 11:28:59', '1', null, null, null, null, null, null, null);
 INSERT INTO `bs_user` VALUES ('16', '董平', '1232132', '天立星', null, '13876554123', '1', '2017-04-19 21:12:45', '2017-04-19 21:12:48', '1', null, '1', null, null, null, null, null, null, null);
-INSERT INTO `bs_user` VALUES ('17', '柴颖颖', null, '颖颖', null, '13027786219', '2', '2017-04-23 23:19:48', null, '0', null, '1', '2017-04-21 00:00:00', '850494695@qq.com', '河南省,郑州市', null, null, null, null);
+INSERT INTO `bs_user` VALUES ('17', '柴颖颖', null, '颖颖', null, '13503820868', '2', '2017-04-23 23:19:48', null, '0', null, '1', '2017-04-21 00:00:00', '850494695@qq.com', '河南省,郑州市', null, null, null, null);
+
+-- ----------------------------
+-- Table structure for bs_user_role
+-- ----------------------------
+DROP TABLE IF EXISTS `bs_user_role`;
+CREATE TABLE `bs_user_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `roleId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of bs_user_role
+-- ----------------------------
+INSERT INTO `bs_user_role` VALUES ('1', '1', '1');
