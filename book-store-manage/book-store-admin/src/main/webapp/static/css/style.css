@@ -1,0 +1,5 @@
+@charset "UTF-8";
+.table-center > thead > tr > th,
+.table-center > tbody > tr > td {
+    text-align: center;
+}

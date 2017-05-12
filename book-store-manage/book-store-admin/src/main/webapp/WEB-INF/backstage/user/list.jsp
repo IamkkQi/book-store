@@ -17,6 +17,7 @@
     <jsp:include page="${backstage}/WEB-INF/backstage/include/css.jsp"></jsp:include>
     <link href="${backstage}/static/adminLTE-2.3.11/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
     <jsp:include page="${backstage}/WEB-INF/backstage/include/javascript.jsp"></jsp:include>
+    <link href="${backstage}/static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <section class="content-header">
@@ -41,15 +42,15 @@
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
-                <div class="box">
+                <div class="box box-info">
                     <div class="box-header">
                        <%-- <h3 class="box-title">Data Table With Full Features</h3>--%>
                     </div>
                     <div class="box-body">
-                        <table id="userTable" class="table table-bordered table-striped">
+                        <table id="userTable" class="table table-bordered table-hover table-center">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>序号</th>
                                     <th>用户名</th>
                                     <th>昵称</th>
                                     <th>手机号</th>
@@ -63,9 +64,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${pageBean.recordList}" var="user">
+                                <c:forEach items="${pageBean.recordList}" var="user" varStatus="i">
                                     <tr>
-                                        <td>${user.id}</td>
+                                        <td>${i.index + 1}</td>
                                         <td>${user.userName}</td>
                                         <td>${user.nickName}</td>
                                         <td>${user.tel}</td>
@@ -90,7 +91,7 @@
                                                 <a href="javascript:;" data-uid="${user.id}" data-status="0" class="disUser">禁用</a>
                                             </c:if>
                                              |
-                                            <a href="javascript:;" data-uid="${user.id}" class="btn btn-danger btn-xs deleteUser">删除</a></td>
+                                            <a href="javascript:;" data-uid="${user.id}" class="deleteUser">删除</a></td>
                                     </tr>
                                 </c:forEach>
                                 <tr>
@@ -119,29 +120,29 @@
                 <div class="modal-body">
                     <form class="form-horizontal" action="/admin/user/saveUser" method="post" id="addForm">
                         <div class="form-group">
-                            <label for="userName" class="col-sm-2 control-label">用户名:</label>
+                            <label for="userName" class="col-sm-4 control-label">用户名:</label>
 
-                            <div class="col-sm-10">
+                            <div class="col-sm-6">
                                 <input type="text" name="userName" class="form-control" id="userName" placeholder="请输入用户名">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="nickName" class="col-sm-2 control-label">昵称:</label>
+                            <label for="nickName" class="col-sm-4 control-label">昵称:</label>
 
-                            <div class="col-sm-10">
+                            <div class="col-sm-6">
                                 <input type="text" name="nickName" class="form-control" id="nickName" placeholder="请输入昵称">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="tel" class="col-sm-2 control-label">手机号:</label>
+                            <label for="tel" class="col-sm-4 control-label">手机号:</label>
 
-                            <div class="col-sm-10">
+                            <div class="col-sm-6">
                                 <input type="text" name="tel" class="form-control" id="tel" placeholder="请输入手机号">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">性别:</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-4 control-label">性别:</label>
+                            <div class="col-sm-6">
                                 <select class="form-control" name="gender">
                                     <option value="">请选择</option>
                                     <option value="1">男</option>
@@ -151,9 +152,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">添加时间:</label>
+                            <label class="col-sm-4 control-label">添加时间:</label>
 
-                            <div class="col-sm-10">
+                            <div class="col-sm-6">
                                 <div class="input-group date">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
@@ -164,9 +165,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">出生日期:</label>
+                            <label class="col-sm-4 control-label">出生日期:</label>
 
-                            <div class="col-sm-10">
+                            <div class="col-sm-6">
                                 <div class="input-group date">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
@@ -177,8 +178,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">邮箱:</label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-4 control-label">邮箱:</label>
+                            <div class="col-sm-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                                     <input type="email" name="email" class="form-control" placeholder="Email">
@@ -187,14 +188,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">地址:</label>
-                            <div class="col-sm-10" data-toggle="distpicker" id="address" data-placeholder="true">
-                                <div class="col-sm-6" style="float: left">
-                                    <select name="address" class="form-control"></select>
-                                </div>
-                                <div class="col-sm-6" style="float: left">
-                                    <select name="address" class="form-control"></select>
-                                </div>
+                            <label class="col-sm-4 control-label">籍贯:</label>
+                            <div class="col-sm-6" data-toggle="distpicker" id="address" data-placeholder="true">
+                                <select name="address" class="form-control" style="width: 49%; float: left; margin-right: 2%;"></select>
+                                <select name="address" class="form-control" style="width: 49%; float: left"></select>
                             </div>
                         </div>
                     </form>
