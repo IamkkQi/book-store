@@ -83,7 +83,8 @@
                                             <c:if test="${user.status == 1}">正常</c:if>
                                             <c:if test="${user.status == 0}">禁用</c:if>
                                         </td>
-                                        <td><a href="#" data-uid="${user.id}">修改</a> |
+                                        <td>
+                                            <a href="${backstage}/admin/user/details/${user.id}" data-uid="${user.id}">详情</a> |
                                             <c:if test="${user.status == 0}">
                                                 <a href="javascript:;" data-uid="${user.id}" data-status="1" class="disUser">解禁</a>
                                             </c:if>
@@ -91,7 +92,8 @@
                                                 <a href="javascript:;" data-uid="${user.id}" data-status="0" class="disUser">禁用</a>
                                             </c:if>
                                              |
-                                            <a href="javascript:;" data-uid="${user.id}" class="deleteUser">删除</a></td>
+                                            <a href="javascript:;" data-uid="${user.id}" class="deleteUser">删除</a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 <tr>
@@ -243,92 +245,6 @@
             </div>
         </div>
     </div>
-
-    <!-- 修改用户 -->
-    <%--<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="editModalLabel">修改用户</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" action="/admin/user/editUser" method="post" id="editForm">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">用户名:</label>
-
-                            <div class="col-sm-4">
-                                <input type="text" name="userName" class="form-control" placeholder="请输入用户名">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">昵称:</label>
-
-                            <div class="col-sm-4">
-                                <input type="text" name="nickName" class="form-control" placeholder="请输入昵称">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">手机号:</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="tel" class="form-control" placeholder="请输入手机号">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">性别:</label>
-                            <div class="col-sm-4">
-                                <select class="form-control" name="gender">
-                                    <option value="">请选择</option>
-                                    <option value="1">男</option>
-                                    <option value="2">女</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">出生日期:</label>
-
-                            <div class="col-sm-10">
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="text" readonly name="birthDateStr" class="form-control pull-right form_date-birthDate">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">邮箱:</label>
-                            <div class="col-sm-4">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                    <input type="email" name="email" class="form-control" placeholder="Email">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">地址:</label>
-                            <div class="col-sm-4" data-toggle="distpicker" id="editAddress" data-placeholder="true">
-                                <div class="col-sm-2" style="float: left">
-                                    <select name="address" class="form-control"></select>
-                                </div>
-                                <div class="col-sm-2" style="float: left">
-                                    <select name="address" class="form-control"></select>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" id="userEdit-btn">确定</button>
-                </div>
-            </div>
-        </div>
-    </div>--%>
-
 </body>
 <script src="${backstage}/static/adminLTE-2.3.11/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
 <script src="${backstage}/static/adminLTE-2.3.11/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>

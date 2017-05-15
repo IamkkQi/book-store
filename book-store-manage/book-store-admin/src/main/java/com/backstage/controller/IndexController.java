@@ -5,7 +5,6 @@ import com.bs.pojo.User;
 import com.bs.service.MenuService;
 import com.bs.service.UserService;
 import com.bs.utils.VerifyCodeUtils;
-import com.bs.utils.string.StringUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;

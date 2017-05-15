@@ -5,6 +5,8 @@ import com.bs.constants.Constants;
 import com.bs.pojo.User;
 import com.bs.service.UserService;
 import com.bs.utils.time.DateFormatUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -26,6 +28,16 @@ public class UserController {
     @Resource
     private UserService userService;
 
+
+    private static Logger logger = LoggerFactory.getLogger(UserController.class);
+
+    /**
+     * 用户列表
+     * @param model
+     * @param pageNum
+     * @param keys
+     * @return
+     */
     @RequestMapping("/list")
     public String list(Model model, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum, String keys) {
         List<User> users = userService.listAllUsers(pageNum, keys);
@@ -34,6 +46,13 @@ public class UserController {
         return "user/list";
     }
 
+    /**
+     * 用户添加
+     * @param user
+     * @param birthDateStr
+     * @return
+     * @throws ParseException
+     */
     @RequestMapping("/saveUser")
     public String saveUser(User user, String birthDateStr) throws ParseException {
         user.setCreateTime(new Date());
@@ -46,6 +65,11 @@ public class UserController {
         return "redirect:/admin/user/list";
     }
 
+    /**
+     * 用户删除
+     * @param uid
+     * @return
+     */
     @RequestMapping("/deleteUser/{uid}")
     public String deleteUser(@PathVariable("uid") Long uid) {
         User user = userService.getById(uid);
@@ -57,6 +81,12 @@ public class UserController {
         return "redirect:/admin/user/list";
     }
 
+    /**
+     * 用户禁用
+     * @param userId 用户id
+     * @param status 用户状态
+     * @return
+     */
     @RequestMapping("/disUser")
     public String disUser(Long userId, Integer status) {
         User user = userService.getById(userId);
@@ -68,5 +98,17 @@ public class UserController {
         return "redirect:/admin/user/list";
     }
 
-
+    /**
+     * 用户详情
+     * @param model
+     * @param uid
+     * @return
+     */
+    @RequestMapping("/details/{uid}")
+    public String details(Model model, @PathVariable("uid") Long uid) {
+        logger.info("-----------------------用户详情-----------------------");
+        User user = userService.getById(uid);
+        model.addAttribute("u", user);
+        return "user/details";
+    }
 }
