@@ -45,37 +45,37 @@
 			background-color: #f6f6f6;
 			margin-left: -1px;
 		}
-		.pagination li a.page-first{
+		.pagination li a.page-first {
 			width: 48px;
 		}
 		
-		.pagination li a:hover{
+		.pagination li a:hover {
 			z-index: 2;
 			color: #fff;
 			background-color: #33b2ff;
 			border-color: #33b2ff;
 		}
 		.pagination li a:focus,
-		.pagination li a:focus{
+		.pagination li a:focus {
 			z-index: 2;
 			color: #fff;
 			background-color: #66c6ff;
 			border-color: #66c6ff;
 		}
 		
-		.pagination .active a{
+		.pagination .active a {
 			z-index: 3;
 			color: #fff;
 			background-color: #00a0fe;	
 			border-color: #00a0fe;
 			cursor: default;
 		}
-		.pagination .li-input input{
+		.pagination .li-input input {
 			width: 48px;
 			height: 32px;
 			border: 1px solid #ccc;
 			padding: 0;
-			margin-left: 40px;
+			margin-left: 20px;
 			margin-right: 20px;
 		}
 	</style>

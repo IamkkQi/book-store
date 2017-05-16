@@ -129,9 +129,16 @@ public class IndexController {
         }
     }
 
-    @RequestMapping("/login/logout")
-    public String logout() {
-        return null;
+    /**
+     * 注销
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "/login/logout", method = RequestMethod.GET)
+    public String logout(HttpSession session) {
+        session.removeAttribute("user");
+        SecurityUtils.getSubject().logout();
+        return "redirect:/admin/loginUI";
     }
 
     /**
@@ -185,5 +192,6 @@ public class IndexController {
     public String err403() {
         return "403";
     }
+
 
 }

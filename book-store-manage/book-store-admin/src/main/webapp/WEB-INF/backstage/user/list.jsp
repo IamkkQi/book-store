@@ -21,10 +21,7 @@
 </head>
 <body>
     <section class="content-header">
-        <h1>
-            用户列表
-            <small>user list</small>
-        </h1>
+        <div class="paper-title">用户列表</div>
         <form action="${backstage}/admin/user/list" method="post" id="uForm">
             <input type="hidden" name="keys" id="keys">
         </form>
@@ -120,7 +117,7 @@
                     <h4 class="modal-title" id="myModalLabel">添加用户</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" action="/admin/user/saveUser" method="post" id="addForm">
+                    <form class="form-horizontal" action="${backstage}/admin/user/saveUser" method="post" id="addForm">
                         <div class="form-group">
                             <label for="userName" class="col-sm-4 control-label">用户名:</label>
 
@@ -150,19 +147,6 @@
                                     <option value="1">男</option>
                                     <option value="2">女</option>
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">添加时间:</label>
-
-                            <div class="col-sm-6">
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="text" readonly name="createTime" class="form-control pull-right form_date-createTime">
-                                </div>
                             </div>
                         </div>
 

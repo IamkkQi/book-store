@@ -1,5 +1,38 @@
 @charset "UTF-8";
+
 .table-center > thead > tr > th,
 .table-center > tbody > tr > td {
     text-align: center;
+}
+
+.dropdown-menu li a {
+    height: 40px;
+    padding-top: 10px;
+}
+
+.paper-title {
+    border-left: 3px solid #00c0ef;
+    padding-left: 10px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* 信息展示 */
+.basic-info {
+    border: 1px solid #cccccc;
+    border-top: 3px solid #00c0ef;
+    float: left;
+    width: 30%;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.basic-info-left {
+
+}
+
+.basic-info-right {
+    margin-left: 20px;
 }

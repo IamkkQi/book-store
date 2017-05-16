@@ -14,14 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>登录</title>
     <jsp:include page="${backstage}/WEB-INF/backstage/include/css.jsp"></jsp:include>
-    <link href="${backstage}/static/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="${backstage}/static/css/login.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-6 col-md-4 form-login">
-                <form action="/admin/login" method="post" id="uForm">
+                <form action="${backstage}/admin/login" method="post" id="uForm">
                     <div class="login-header-h1">
                         <h1>书林网后台管理系统</h1>
                     </div>
@@ -43,7 +42,7 @@
                     </div>
                     <input type="hidden" name="isRTel" id="isRTelH">
                     <input type="hidden" name="" class="code">
-                    <div class="checkbox">
+                    <div class="checkbox remember">
                         <label>
                             <input type="checkbox" id="isRTel">记住我
                         </label>

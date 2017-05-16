@@ -15,11 +15,12 @@
     <%-- 告诉浏览器响应屏幕宽度 --%>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <jsp:include page="include/css.jsp"></jsp:include>
+    <link href="${backstage}/static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <style type="text/css">
 
 </style>
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body class="hold-transition skin-blue fixed sidebar-mini" style="overflow: hidden">
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
@@ -34,45 +35,17 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                             <img src="/static/adminLTE-2.3.11/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <span class="hidden-xs">${user.userName}</span>
+                            <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="user-header">
-                                <img src="/static/adminLTE-2.3.11/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                                <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2012</small>
-                                </p>
-                            </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                                </div>
+                            <li>
+                               <a href="${backstage}/admin/login/logout"><i class="fa fa-power-off"></i>注销</a>
                             </li>
                         </ul>
                     </li>
-
                 </ul>
             </div>
         </nav>
@@ -102,29 +75,18 @@
         </section>
     </aside>
 
-    <!-- ---------------------------------------------------------------- -->
-    <div class="content-wrapper" style="height: 100%"><!-- 主内容 -->
-        <section class="content">
-            <iframe class="main-content" name="main-content" style="overflow:inherit;" scrolling="yes" frameborder="0" height="100%" width="100%">
+    <!-- --------------------------------主内容-------------------------------- -->
+    <div class="content-wrapper" style="overflow: auto;">
+        <iframe class="main-content" name="main-content" scrolling="yes" style="margin-left:0; width:100%; overflow-x:hidden;" frameborder="0" height="100%" width="100%">
 
-            </iframe>
-        </section>
+        </iframe>
     </div>
-
-    <!-- 页脚 -->
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 2.3.8
-        </div>
-        <strong>Copyright &copy; 2017-2017 <a href="#">Book-Store</a>.</strong> All rights
-        reserved.
-    </footer>
-
 </div>
 </body>
 
 <jsp:include page="include/javascript.jsp"></jsp:include>
+<script src="${backstage}/static/adminLTE-2.3.11/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript">
-    $(".main-content").height($(window).height());
+    $(".main-content").height($(window).height() - 55);
 </script>
 </html>

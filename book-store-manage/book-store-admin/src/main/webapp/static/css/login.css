@@ -3,12 +3,17 @@
 .form-login {
     float: none;
     display: block;
-    margin: auto;
+    margin: 12% auto auto auto;
 }
 .input-group {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .login-header-h1 {
     text-align: center;
+    margin-bottom: 30px;
+}
+
+.remember {
+    margin-top: -10px;
 }
