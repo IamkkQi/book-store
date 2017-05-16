@@ -24,7 +24,10 @@
     <section class="content">
         <div class="">
             <div class="basic-info">
-                <div></div>
+                <div class="basic-info-title">
+                    <span class="">基本信息</span>
+                    <a class="edit-btn">编辑</a>
+                </div>
                 <div class="basic-info-left">
                     <span>用户名</span>
                 </div>
@@ -34,7 +37,7 @@
             </div>
 
             <div class="basic-info">
-                <div></div>
+                <div class="basic-info-title"></div>
                 <div class="basic-info-left">
                     <span>用户名</span>
                 </div>

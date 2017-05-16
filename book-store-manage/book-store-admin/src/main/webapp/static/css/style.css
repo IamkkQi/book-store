@@ -24,10 +24,26 @@
     border-top: 3px solid #00c0ef;
     float: left;
     width: 30%;
-    padding: 20px;
     font-size: 16px;
     font-weight: 400;
     margin-right: 20px;
+}
+
+.basic-info-title {
+    height: 30px;
+    line-height: 30px;
+    background-color: #cccccc;
+    padding: 0 10px;
+    position: relative;
+}
+
+.basic-info-title span {
+    font-weight: bold;
+}
+
+.basic-info-title a {
+    position: absolute;
+    right: 10px;
 }
 
 .basic-info-left {
