@@ -23,20 +23,22 @@
 
     <section class="content">
         <div class="">
-            <div class="basic-info basic-info-left">
-                <div class="info-left">
+            <div class="basic-info">
+                <div></div>
+                <div class="basic-info-left">
                     <span>用户名</span>
                 </div>
-                <div class="info-right">
+                <div class="basic-info-right">
                     <span>亓凯凯</span>
                 </div>
             </div>
 
-            <div class="basic-info basic-info-right">
-                <div class="info-left">
+            <div class="basic-info">
+                <div></div>
+                <div class="basic-info-left">
                     <span>用户名</span>
                 </div>
-                <div class="info-right">
+                <div class="basic-info-right">
                     <span>亓凯凯</span>
                 </div>
             </div>
