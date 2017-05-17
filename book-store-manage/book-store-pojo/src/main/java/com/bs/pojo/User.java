@@ -31,6 +31,9 @@ public class User implements Serializable {
     private Date lastAccessTime; // 最后访问时间
     private String userIp; // 用户ip
     private String salt; // 盐
+    private String nation; // 民族
+    private String occupation; // 职业
+    private String idCard; // 身份证
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -186,6 +189,30 @@ public class User implements Serializable {
         this.salt = salt;
     }
 
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -208,6 +235,9 @@ public class User implements Serializable {
                 ", lastAccessTime=" + lastAccessTime +
                 ", userIp='" + userIp + '\'' +
                 ", salt='" + salt + '\'' +
+                ", nation='" + nation + '\'' +
+                ", occupation='" + occupation + '\'' +
+                ", idCard='" + idCard + '\'' +
                 '}';
     }
 }
