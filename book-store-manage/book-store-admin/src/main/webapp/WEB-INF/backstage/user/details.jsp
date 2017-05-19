@@ -10,10 +10,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>用户详情</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>用户详情</title>
     <jsp:include page="${backstage}/WEB-INF/backstage/include/css.jsp"></jsp:include>
 </head>
 <body>
@@ -22,7 +22,7 @@
     </section>
 
     <section class="content">
-        <div class="basic-content">
+        <div class="user-basic-content">
             <%-- 基本信息 --%>
             <div class="basic-info">
                 <div class="basic-info-title">
@@ -84,7 +84,7 @@
                         <span>籍贯：</span>
                     </div>
                     <div class="basic-info-right">
-                        <span>${u.address}</span>
+                        <span>${u.province} ${u.city}</span>
                     </div>
                 </div>
 
@@ -190,7 +190,9 @@
 
                 <div class="basic-info-content">
                     <ul class="basic-info-img">
-                        <li><img src="/static/img/001-bg.jpg"/></li>
+                        <li>
+                            <img src="/static/img/001-bg.jpg" />
+                        </li>
                         <li class="add-img">
                             <label for="addImg" class="icon-img"><i class="fa fa-plus"></i></label>
                             <input multiple="multiple" class="input-img" type="file" name="" id="addImg" value="" onchange="" />
@@ -200,12 +202,156 @@
             </div>
         </div>
     </section>
+
+    <!-- 编辑基本用户 -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="editModalLabel">编辑基本信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="${backstage}/admin/user/editBasicUser" method="post" id="basicForm">
+                        <input type="hidden" name="id" value="${u.id}">
+                        <div class="form-group">
+                            <label for="userName" class="col-sm-4 control-label">用户名:</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="userName" class="form-control" id="userName" value="${u.userName}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nickName" class="col-sm-4 control-label">昵称:</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="nickName" class="form-control" id="nickName" value="${u.nickName}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">性别:</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" name="gender">
+                                    <option value="">请选择</option>
+                                    <option value="1" <c:if test="${u.gender == 1}">selected</c:if>>男</option>
+                                    <option value="2" <c:if test="${u.gender == 2}">selected</c:if>>女</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">出生日期:</label>
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" readonly name="birthDateStr" class="form-control pull-right form_date-birthDate" value="${u.birthDate}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="idCard" class="col-sm-4 control-label">身份证号:</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="idCard" class="form-control" id="idCard" value="${u.idCard}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">邮箱:</label>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input type="email" name="email" class="form-control" value="${u.email}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">籍贯:</label>
+                            <div class="col-sm-6" data-toggle="distpicker" id="address">
+                                <select name="province" class="form-control" style="width: 49%; float: left; margin-right: 2%;"></select>
+                                <select name="city" class="form-control" style="width: 49%; float: left"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">民族:</label>
+                            <div class="col-sm-6">
+                                <select name="nation" class="form-control">
+                                    <option value="汉族" <c:if test="${u.nation == '汉族'}">selected</c:if>>汉族</option>
+                                    <option value="满族" <c:if test="${u.nation == '满族'}">selected</c:if>>满族</option>
+                                    <option value="回族" <c:if test="${u.nation == '回族'}">selected</c:if>>回族</option>
+                                    <option value="苗族" <c:if test="${u.nation == '苗族'}">selected</c:if>>苗族</option>
+                                    <option value="其他" <c:if test="${u.nation == '其他'}">selected</c:if>>其他</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="occupation" class="col-sm-4 control-label">职业:</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="occupation" class="form-control" id="occupation" value="${u.occupation}">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="userBasicEdit-btn">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editZHModal" tabindex="-1" role="dialog" aria-labelledby="editZHModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="editZHModalLabel">编辑账户信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="${backstage}/admin/user/editZHUser" method="post" id="zhForm">
+                        <input type="hidden" name="id" value="${u.id}">
+                        <div class="form-group">
+                            <label for="tel" class="col-sm-4 control-label">手机号:</label>
+                            <div class="col-sm-6">
+                                <input type="text" name="tel" class="form-control" id="tel" value="${u.tel}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">用户状态:</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" name="status">
+                                    <option value="0" <c:if test="${u.status == 0}">selected</c:if>>禁用</option>
+                                    <option value="1" <c:if test="${u.status == 1}">selected</c:if>>正常</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="userZHEdit-btn">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <jsp:include page="${backstage}/WEB-INF/backstage/include/javascript.jsp"></jsp:include>
+<script src="${backstage}/static/distpicker/dist/distpicker.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     
     $(function () {
         initImgSize();
+        // alert("${u.province}" == '' ? '—— 省 ——' : "${u.province}");
+        // 籍贯
+        $('#address').distpicker({
+            province: ("${u.province}" == '' ? '—— 省 ——' : "${u.province}"),
+            city: ("${u.city}" == '' ? '—— 市  ——' : "${u.city}"),
+        });
+
     });
 
 
@@ -228,5 +374,24 @@
             }
         });
     }
+
+    /* 编辑基本信息 */
+    $(".b-edit-btn").click(function () {
+        $("#editModal").modal("show");
+    });
+
+    $("#userBasicEdit-btn").click(function () {
+        $("#editModal").modal("hide");
+        $("#basicForm").submit();
+    });
+
+    /* 编辑账户信息 */
+    $(".a-edit-btn").click(function () {
+        $("#editZHModal").modal('show');
+    });
+    $("#userZHEdit-btn").click(function () {
+        $("#editZHModal").modal('hide');
+        $("#zhForm").submit();
+    });
 </script>
 </html>

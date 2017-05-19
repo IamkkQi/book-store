@@ -61,35 +61,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${pageBean.recordList}" var="user" varStatus="i">
+                                <c:forEach items="${pageBean.recordList}" var="u" varStatus="i">
                                     <tr>
                                         <td>${i.index + 1}</td>
-                                        <td>${user.userName}</td>
-                                        <td>${user.nickName}</td>
-                                        <td>${user.tel}</td>
+                                        <td>${u.userName}</td>
+                                        <td>${u.nickName}</td>
+                                        <td>${u.tel}</td>
                                         <td>
-                                            <c:if test="${user.gender == 0}">未知</c:if>
-                                            <c:if test="${user.gender == 1}">男</c:if>
-                                            <c:if test="${user.gender == 2}">女</c:if>
+                                            <c:if test="${u.gender == 0}">未知</c:if>
+                                            <c:if test="${u.gender == 1}">男</c:if>
+                                            <c:if test="${u.gender == 2}">女</c:if>
                                         </td>
-                                        <td><fmt:formatDate value="${user.birthDate}" pattern="yyyy-MM-dd"></fmt:formatDate></td>
-                                        <td>${user.email}</td>
-                                        <td>${user.address}</td>
-                                        <td><fmt:formatDate value="${user.createTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+                                        <td><fmt:formatDate value="${u.birthDate}" pattern="yyyy-MM-dd"></fmt:formatDate></td>
+                                        <td>${u.email}</td>
+                                        <td>${u.province} ${u.city}</td>
+                                        <td><fmt:formatDate value="${u.createTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
                                         <td>
-                                            <c:if test="${user.status == 1}">正常</c:if>
-                                            <c:if test="${user.status == 0}">禁用</c:if>
+                                            <c:if test="${u.status == 1}">正常</c:if>
+                                            <c:if test="${u.status == 0}">禁用</c:if>
                                         </td>
                                         <td>
-                                            <a href="${backstage}/admin/user/details/${user.id}" data-uid="${user.id}">详情</a> |
-                                            <c:if test="${user.status == 0}">
-                                                <a href="javascript:;" data-uid="${user.id}" data-status="1" class="disUser">解禁</a>
+                                            <a href="${backstage}/admin/user/details/${u.id}" data-uid="${u.id}">详情</a> |
+                                            <c:if test="${u.status == 0}">
+                                                <a href="javascript:;" data-uid="${u.id}" data-status="1" class="disUser">解禁</a>
                                             </c:if>
-                                            <c:if test="${user.status == 1}">
-                                                <a href="javascript:;" data-uid="${user.id}" data-status="0" class="disUser">禁用</a>
+                                            <c:if test="${u.status == 1}">
+                                                <a href="javascript:;" data-uid="${u.id}" data-status="0" class="disUser">禁用</a>
                                             </c:if>
                                              |
-                                            <a href="javascript:;" data-uid="${user.id}" class="deleteUser">删除</a>
+                                            <a href="javascript:;" data-uid="${u.id}" class="deleteUser">删除</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -164,6 +164,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="idCard" class="col-sm-4 control-label">身份证号:</label>
+
+                            <div class="col-sm-6">
+                                <input type="text" name="idCard" class="form-control" id="idCard" placeholder="请输入身份证号">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-sm-4 control-label">邮箱:</label>
                             <div class="col-sm-6">
                                 <div class="input-group">
@@ -176,8 +184,29 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label">籍贯:</label>
                             <div class="col-sm-6" data-toggle="distpicker" id="address" data-placeholder="true">
-                                <select name="address" class="form-control" style="width: 49%; float: left; margin-right: 2%;"></select>
-                                <select name="address" class="form-control" style="width: 49%; float: left"></select>
+                                <select name="province" class="form-control" style="width: 49%; float: left; margin-right: 2%;"></select>
+                                <select name="city" class="form-control" style="width: 49%; float: left"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">民族:</label>
+                            <div class="col-sm-6">
+                                <select name="nation" class="form-control">
+                                    <option value="汉族">汉族</option>
+                                    <option value="满族">满族</option>
+                                    <option value="回族">回族</option>
+                                    <option value="苗族">苗族</option>
+                                    <option value="其他">其他</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="occupation" class="col-sm-4 control-label">职业:</label>
+
+                            <div class="col-sm-6">
+                                <input type="text" name="occupation" class="form-control" id="occupation" placeholder="学生/老师/程序员">
                             </div>
                         </div>
                     </form>
@@ -189,6 +218,7 @@
             </div>
         </div>
     </div>
+
     <%-- 删除用户 --%>
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="top: 30%;">

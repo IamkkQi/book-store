@@ -14,7 +14,7 @@ import java.util.Date;
 public class Book implements Serializable {
     private Long id;
     private String bookName; // 书名
-    private String bookAuthor;   // 作者
+    private String bookAuthor; // 作者
     private BigDecimal bookPrice; // 图书定价
     private String bookImgUrl; // 图片地址
     private String bookNumber; // 图书编号
@@ -23,19 +23,19 @@ public class Book implements Serializable {
     private Date updateTime; // 更新时间
     private Date deleteTime; // 删除时间
     private Integer isDel = 0; // 是否删除 0-不删除 1-删除
-    private Integer status = 0; // 状态
+    private Integer status = 1; // 状态 默认1可用
     private String bookPress; // 出版社
     private Date bookPubTime; // 出版日期
     private String bookSize; // 开本
     private Integer bookPages; // 图书页码
     private String bookOutline; // 图书简介
     private String bookCatalog; // 图书目录
-    private BigDecimal bookMprice; // 市场价
-    private BigDecimal bookPrprice; // 会员价
-    private Integer bookDealmount; // 成交量
-    private Integer bookLookmount; // 浏览次数
-    private Integer bookStoremount; // 图书库存量
-    private Date bookStoretime; // 入库时间
+    private BigDecimal bookMarketPrice; // 市场价
+    private BigDecimal bookVIPPrice; // 会员价
+    private Integer bookDealMount; // 成交量
+    private Integer bookLookMount; // 浏览次数
+    private Integer bookStoreMount; // 图书库存量
+    private Date bookStoreTime; // 入库时间
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -183,52 +183,52 @@ public class Book implements Serializable {
         this.bookCatalog = bookCatalog;
     }
 
-    public BigDecimal getBookMprice() {
-        return bookMprice;
+    public BigDecimal getBookMarketPrice() {
+        return bookMarketPrice;
     }
 
-    public void setBookMprice(BigDecimal bookMprice) {
-        this.bookMprice = bookMprice;
+    public void setBookMarketPrice(BigDecimal bookMarketPrice) {
+        this.bookMarketPrice = bookMarketPrice;
     }
 
-    public BigDecimal getBookPrprice() {
-        return bookPrprice;
+    public BigDecimal getBookVIPPrice() {
+        return bookVIPPrice;
     }
 
-    public void setBookPrprice(BigDecimal bookPrprice) {
-        this.bookPrprice = bookPrprice;
+    public void setBookVIPPrice(BigDecimal bookVIPPrice) {
+        this.bookVIPPrice = bookVIPPrice;
     }
 
-    public Integer getBookDealmount() {
-        return bookDealmount;
+    public Integer getBookDealMount() {
+        return bookDealMount;
     }
 
-    public void setBookDealmount(Integer bookDealmount) {
-        this.bookDealmount = bookDealmount;
+    public void setBookDealMount(Integer bookDealMount) {
+        this.bookDealMount = bookDealMount;
     }
 
-    public Integer getBookLookmount() {
-        return bookLookmount;
+    public Integer getBookLookMount() {
+        return bookLookMount;
     }
 
-    public void setBookLookmount(Integer bookLookmount) {
-        this.bookLookmount = bookLookmount;
+    public void setBookLookMount(Integer bookLookMount) {
+        this.bookLookMount = bookLookMount;
     }
 
-    public Integer getBookStoremount() {
-        return bookStoremount;
+    public Integer getBookStoreMount() {
+        return bookStoreMount;
     }
 
-    public void setBookStoremount(Integer bookStoremount) {
-        this.bookStoremount = bookStoremount;
+    public void setBookStoreMount(Integer bookStoreMount) {
+        this.bookStoreMount = bookStoreMount;
     }
 
-    public Date getBookStoretime() {
-        return bookStoretime;
+    public Date getBookStoreTime() {
+        return bookStoreTime;
     }
 
-    public void setBookStoretime(Date bookStoretime) {
-        this.bookStoretime = bookStoretime;
+    public void setBookStoreTime(Date bookStoreTime) {
+        this.bookStoreTime = bookStoreTime;
     }
 
     @Override
@@ -252,12 +252,12 @@ public class Book implements Serializable {
                 ", bookPages=" + bookPages +
                 ", bookOutline='" + bookOutline + '\'' +
                 ", bookCatalog='" + bookCatalog + '\'' +
-                ", bookMprice=" + bookMprice +
-                ", bookPrprice=" + bookPrprice +
-                ", bookDealmount=" + bookDealmount +
-                ", bookLookmount=" + bookLookmount +
-                ", bookStoremount=" + bookStoremount +
-                ", bookStoretime=" + bookStoretime +
+                ", bookMarketPrice=" + bookMarketPrice +
+                ", bookVIPPrice=" + bookVIPPrice +
+                ", bookDealMount=" + bookDealMount +
+                ", bookLookMount=" + bookLookMount +
+                ", bookStoreMount=" + bookStoreMount +
+                ", bookStoreTime=" + bookStoreTime +
                 '}';
     }
 }

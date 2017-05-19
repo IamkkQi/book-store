@@ -26,7 +26,8 @@ public class User implements Serializable {
     private Integer status = 1; // 状态 默认1可用
     private Date birthDate; // 出生日期
     private String email; // 电子邮箱
-    private String address; // 籍贯
+    private String province; // 省
+    private String city; // 市
     private Integer loginStatus; // 登录状态
     private Date lastAccessTime; // 最后访问时间
     private String userIp; // 用户ip
@@ -149,12 +150,20 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
+    public String getProvince() {
+        return province;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public Integer getLoginStatus() {
@@ -230,7 +239,8 @@ public class User implements Serializable {
                 ", status=" + status +
                 ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
                 ", loginStatus=" + loginStatus +
                 ", lastAccessTime=" + lastAccessTime +
                 ", userIp='" + userIp + '\'' +

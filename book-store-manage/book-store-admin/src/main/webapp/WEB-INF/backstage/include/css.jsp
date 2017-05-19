@@ -8,6 +8,8 @@
 <%@ include file="/WEB-INF/backstage/include/taglib.jsp"%>
 <link href="${backstage}/static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="${backstage}/static/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+<link href="${backstage}/static/bootstrap-validator/dist/css/bootstrapValidator.min.css" rel="stylesheet" type="text/css">
+<link href="${backstage}/static/adminLTE-2.3.11/plugins/select2/select2.min.css" rel="stylesheet" type="text/css">
 <link href="${backstage}/static/adminLTE-2.3.11/css/AdminLTE.min.css" rel="stylesheet" type="text/css">
 <link href="${backstage}/static/adminLTE-2.3.11/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css">
 <link href="${backstage}/static/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">

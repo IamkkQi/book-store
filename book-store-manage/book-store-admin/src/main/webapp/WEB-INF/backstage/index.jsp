@@ -20,7 +20,7 @@
 <style type="text/css">
 
 </style>
-<body class="hold-transition skin-blue fixed sidebar-mini" style="overflow: hidden">
+<body class="hold-transition skin-blue fixed sidebar-mini">
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->

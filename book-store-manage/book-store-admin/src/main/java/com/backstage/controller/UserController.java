@@ -111,4 +111,41 @@ public class UserController {
         model.addAttribute("u", user);
         return "user/details";
     }
+
+    /**
+     * 用户基本信息编辑
+     * @param user
+     * @return
+     */
+    @RequestMapping("editBasicUser")
+    public String editBasicUser(User user, String birthDateStr) throws ParseException {
+        User userDB = userService.getById(user.getId());
+        if (userDB != null) {
+            userDB.setUserName(user.getUserName());
+            userDB.setNickName(user.getNickName());
+            userDB.setGender(user.getGender());
+            userDB.setBirthDate(StringUtils.isEmpty(birthDateStr) ? null : DateFormatUtil.parseDate("yyyy-MM-dd", birthDateStr));
+            userDB.setIdCard(user.getIdCard());
+            userDB.setProvince(user.getProvince());
+            userDB.setCity(user.getCity());
+            userDB.setNation(user.getNation());
+            userDB.setOccupation(user.getOccupation());
+            userDB.setEmail(user.getEmail());
+            userDB.setUpdateTime(new Date());
+            userService.update(userDB);
+        }
+        return "redirect:/admin/user/details/" + user.getId();
+    }
+
+    @RequestMapping("editZHUser")
+    public String editZHUser(User user) {
+        User userDB = userService.getById(user.getId());
+        if (userDB != null) {
+            userDB.setTel(user.getTel());
+            userDB.setStatus(user.getStatus());
+            userDB.setUpdateTime(new Date());
+            userService.update(userDB);
+        }
+        return "redirect:/admin/user/details/" + user.getId();
+    }
 }
