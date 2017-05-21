@@ -36,4 +36,10 @@ public interface UserService extends BaseDAO<User> {
      * @return
      */
     User findUserByTel(String tel);
+
+    /**
+     * 查询没有角色的用户
+     * @return
+     */
+    List<User> listUsersWithNotRole();
 }

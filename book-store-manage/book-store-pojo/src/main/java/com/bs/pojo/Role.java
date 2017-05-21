@@ -16,8 +16,8 @@ public class Role implements Serializable {
     // 角色名称
     private String roleName;
     // 角色说明
-    private String desp;
-    // 创建方式 0-默认 1-自定义
+    private String description;
+    //  0-默认 1-自定义
     private Integer type;
     // 创建时间
     private Date createTime;
@@ -40,12 +40,12 @@ public class Role implements Serializable {
         this.roleName = roleName;
     }
 
-    public String getDesp() {
-        return desp;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesp(String desp) {
-        this.desp = desp;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getType() {
@@ -69,9 +69,19 @@ public class Role implements Serializable {
         return "Role{" +
                 "id=" + id +
                 ", roleName='" + roleName + '\'' +
-                ", desp='" + desp + '\'' +
+                ", description='" + description + '\'' +
                 ", type=" + type +
                 ", createTime=" + createTime +
                 '}';
+    }
+
+    public Role() {
+    }
+
+    public Role(String roleName, String description, Integer type, Date createTime) {
+        this.roleName = roleName;
+        this.description = description;
+        this.type = type;
+        this.createTime = createTime;
     }
 }

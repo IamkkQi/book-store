@@ -34,7 +34,7 @@ public class Order implements Serializable {
     // 收货人手机号
     private String receivingTel;
     // 备注
-    private String desp;
+    private String description;
     // 订单总价钱
     private BigDecimal totalPrice;
     // 订单状态
@@ -136,12 +136,12 @@ public class Order implements Serializable {
         this.receivingTel = receivingTel;
     }
 
-    public String getDesp() {
-        return desp;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesp(String desp) {
-        this.desp = desp;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public BigDecimal getTotalPrice() {
@@ -198,7 +198,7 @@ public class Order implements Serializable {
                 ", receivingName='" + receivingName + '\'' +
                 ", receivingAddress='" + receivingAddress + '\'' +
                 ", receivingTel='" + receivingTel + '\'' +
-                ", desp='" + desp + '\'' +
+                ", description='" + description + '\'' +
                 ", totalPrice=" + totalPrice +
                 ", status=" + status +
                 ", updateTime=" + updateTime +

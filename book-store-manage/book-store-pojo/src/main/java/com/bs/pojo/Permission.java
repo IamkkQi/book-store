@@ -21,7 +21,7 @@ public class Permission implements Serializable {
     // 创建时间
     private Date createTime;
     // 资源描述
-    private String desp;
+    private String description;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,12 +65,12 @@ public class Permission implements Serializable {
         this.createTime = createTime;
     }
 
-    public String getDesp() {
-        return desp;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesp(String desp) {
-        this.desp = desp;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Permission implements Serializable {
                 ", url='" + url + '\'' +
                 ", parentId=" + parentId +
                 ", createTime=" + createTime +
-                ", desp='" + desp + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

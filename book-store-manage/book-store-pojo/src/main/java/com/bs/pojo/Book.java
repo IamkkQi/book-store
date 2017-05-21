@@ -33,7 +33,6 @@ public class Book implements Serializable {
     private BigDecimal bookMarketPrice; // 市场价
     private BigDecimal bookVIPPrice; // 会员价
     private Integer bookDealMount; // 成交量
-    private Integer bookLookMount; // 浏览次数
     private Integer bookStoreMount; // 图书库存量
     private Date bookStoreTime; // 入库时间
 
@@ -207,14 +206,6 @@ public class Book implements Serializable {
         this.bookDealMount = bookDealMount;
     }
 
-    public Integer getBookLookMount() {
-        return bookLookMount;
-    }
-
-    public void setBookLookMount(Integer bookLookMount) {
-        this.bookLookMount = bookLookMount;
-    }
-
     public Integer getBookStoreMount() {
         return bookStoreMount;
     }
@@ -255,7 +246,6 @@ public class Book implements Serializable {
                 ", bookMarketPrice=" + bookMarketPrice +
                 ", bookVIPPrice=" + bookVIPPrice +
                 ", bookDealMount=" + bookDealMount +
-                ", bookLookMount=" + bookLookMount +
                 ", bookStoreMount=" + bookStoreMount +
                 ", bookStoreTime=" + bookStoreTime +
                 '}';

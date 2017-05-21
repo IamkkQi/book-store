@@ -51,4 +51,10 @@ public class UserServiceImpl extends BaseDAOImpl<User> implements UserService {
         return (User) getSession().createQuery(hql).setParameter(0, tel).uniqueResult();
     }
 
+    @Override
+    public List<User> listUsersWithNotRole() {
+        String sql = "SELECT u.* FROM bs_user u WHERE u.id NOT IN(SELECT ur.userId FROM bs_user_role ur)";
+        return getSession().createSQLQuery(sql).addEntity(User.class).list();
+    }
+
 }

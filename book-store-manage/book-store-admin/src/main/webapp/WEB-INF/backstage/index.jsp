@@ -36,7 +36,7 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                            <img src="/static/adminLTE-2.3.11/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <img src="/static/img/logo.png" class="user-image" alt="User Image">
                             <span class="hidden-xs">${user.userName}</span>
                             <i class="fa fa-caret-down"></i>
                         </a>

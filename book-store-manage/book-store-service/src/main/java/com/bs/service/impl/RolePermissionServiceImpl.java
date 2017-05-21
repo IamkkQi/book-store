@@ -27,4 +27,9 @@ public class RolePermissionServiceImpl extends BaseDAOImpl<RolePermission> imple
         return getSession().createSQLQuery(sql).setParameterList("ids", roleIds).list();
     }
 
+    @Override
+    public void deleteRolePermissionByRoleId(Long roleId) {
+        getSession().createQuery("DELETE FROM RolePermission WHERE roleId = ?").setParameter(0, roleId).executeUpdate();
+    }
+
 }
