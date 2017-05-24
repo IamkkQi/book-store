@@ -48,6 +48,7 @@ public class RoleController {
         // 没有角色的用户
         List<User> usersWithNotRole = userService.listUsersWithNotRole();
         model.addAttribute("usersWithNotRole", usersWithNotRole);
+        model.addAttribute("keys", keys);
         return "role/list";
     }
 
@@ -97,7 +98,7 @@ public class RoleController {
     }
 
     /**
-     * 添加权限
+     * 添加角色
      * @param userRole
      * @return
      */
@@ -157,5 +158,36 @@ public class RoleController {
         }
         return "redirect:/admin/role/list";
     }
+
+    /**
+     * 该角色下的所有用户
+     * @param model
+     * @param pageNum
+     * @param rid
+     * @param keys
+     * @return
+     */
+    @RequestMapping("userWithRole")
+    public String userWithRole(Model model, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum, Long rid, String keys) {
+        List<Map<String, Object>> usersWithRole = userRoleService.listUsersByRoleId(pageNum, rid, keys);
+        int recordCount = userRoleService.countUsersByRoleId(rid, keys);
+        PageBean<Map<String, Object>> pageBean = new PageBean<>(pageNum, Constants.PAGE_SIZE, usersWithRole, recordCount);
+        model.addAttribute("pageBean", pageBean);
+        model.addAttribute("rid", rid);
+        return "role/userRoleList";
+    }
+
+    /**
+     * 删除用户角色
+     * @param userId
+     * @param roleId
+     * @return
+     */
+    @RequestMapping("deleteUserRole")
+    public String deleteUserRole(Long userId, Long roleId) {
+        userRoleService.deleteUserRoleByUserId(userId);
+        return "redirect:/admin/role/userWithRole?rid=" + roleId;
+    }
+
 
 }

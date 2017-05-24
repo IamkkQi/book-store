@@ -52,6 +52,7 @@ public class ShiroDBRealm extends AuthorizingRealm {
         // 从数据库中查找用户
         User user = userService.findUserByTel(userName);
         if (user != null) {
+            boolean flag = false;
             // 查询角色集合
             List<Role> roles = userRoleService.listRolesByUserId(user.getId());
             // 角色名集合
@@ -64,11 +65,20 @@ public class ShiroDBRealm extends AuthorizingRealm {
                 }
             }
             // 权限集合
-            List<String> permissionNames = rolePermissionService.listPermissionNameByRoleIds(roleIds);
+            List<String> permissionNames = null;
+            try {
+                permissionNames = rolePermissionService.listPermissionNameByRoleIds(roleIds);
+                if (permissionNames != null && permissionNames.size() != 0) {
+                    flag = true;
+                }
+            } catch (Exception e) {
+                flag = false;
+            }
+
             SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
             authorizationInfo.setRoles(roleNames);
             authorizationInfo.addStringPermissions(permissionNames);
-            return authorizationInfo;
+            return flag ? authorizationInfo : null;
 
         }
         return null;

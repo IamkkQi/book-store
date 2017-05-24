@@ -32,4 +32,10 @@ public interface BookService extends BaseDAO<Book> {
      * @return
      */
     Map<String, Object> getBooksDetailsById(Long bid);
+
+    /**
+     * 查询热门图书
+     * @return
+     */
+    List<Map<String, Object>> listBooksWithHot();
 }

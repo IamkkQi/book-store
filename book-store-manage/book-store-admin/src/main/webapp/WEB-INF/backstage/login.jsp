@@ -17,6 +17,7 @@
     <link href="${backstage}/static/css/login.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <div class="login-err-msg"></div>
     <div class="container">
         <div class="row">
             <div class="col-xs-6 col-md-4 form-login">
@@ -38,7 +39,7 @@
                     </div>
                     <div class="input-group" style="display: none" id="login-codeImg">
                         <input type="text" class="form-control input-lg input-code" style="width: 225px;" value="" placeholder="请输入验证码">
-                        <span class="login-codeImg"><img src="" alt="" id="codeImg"></span>
+                        <span class="login-codeImg" style="cursor:pointer;"><img src="" alt="" id="codeImg"></span>
                     </div>
                     <input type="hidden" name="isRTel" id="isRTelH">
                     <input type="hidden" name="" class="code">
@@ -56,11 +57,24 @@
 <jsp:include page="${backstage}/WEB-INF/backstage/include/javascript.jsp"></jsp:include>
 <script type="text/javascript">
     $(function () {
+
         // 判断手机号是否存在
         if ("${tel}" != "") {
             $("#isRTel").prop('checked', true);
             $("#isRTelH").val(1);
         }
+
+        //	验证手机号
+        var regTel = /^[1][345678][0-9]{9}$/;
+        $("#tel").blur(function () {
+            if (regTel.test($("#tel").val())) {
+                $(".login-err-msg").css("visibility","hidden");
+            } else{
+                $(".login-err-msg").text("账号格式有误，请重新输入。");
+                $(".login-err-msg").css("visibility","visible");
+            }
+        })
+
         // 清空密码
         $("#password").val('');
 
@@ -68,7 +82,8 @@
         $("#btn-login").click(function(){
             // 如果验证码可见,判断验证码是否正确
             if ($("#login-codeImg").is(':visible') && $('.input-code').val().toUpperCase() != $('.code').val().toUpperCase()) {
-                alert('验证码错误');
+                $(".login-err-msg").text("验证码错误");
+                $(".login-err-msg").css("visibility","visible");
                 getVerifyCode();
                 return;
             }
@@ -88,10 +103,13 @@
 
             // 验证用户名和密码
             $.post('${backstage}/admin/confirmUser', {"tel" : $.trim($("#tel").val()), "password" : $.trim($("#password").val())}, function (data) {
-                if (data == "yes") {
+                if (data.valid == true) {
                     $("#login-codeImg").hide();
+                    $(".login-err-msg").css("visibility","hidden")
                     $("#uForm").submit();
                 } else {
+                    $(".login-err-msg").text("用户名或密码错误");
+                    $(".login-err-msg").css("visibility","visible");
                     // 登录错误加1
                     login_err = login_err + 1;
                 }

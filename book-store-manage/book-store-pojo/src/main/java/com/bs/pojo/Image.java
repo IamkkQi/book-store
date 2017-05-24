@@ -8,8 +8,8 @@ import java.util.Date;
  * Created by Kay on 2017/5/19.
  */
 @Entity
-@Table(name = "bs_images")
-public class Images implements Serializable {
+@Table(name = "bs_image")
+public class Image implements Serializable {
 
     private Long id;
     // 路径
@@ -95,7 +95,7 @@ public class Images implements Serializable {
 
     @Override
     public String toString() {
-        return "Images{" +
+        return "Image{" +
                 "id=" + id +
                 ", url='" + url + '\'' +
                 ", description='" + description + '\'' +

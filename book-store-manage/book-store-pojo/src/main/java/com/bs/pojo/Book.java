@@ -35,6 +35,7 @@ public class Book implements Serializable {
     private Integer bookDealMount; // 成交量
     private Integer bookStoreMount; // 图书库存量
     private Date bookStoreTime; // 入库时间
+    private Integer isHot; // 推荐 1-推荐 0-不推荐
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -220,6 +221,14 @@ public class Book implements Serializable {
 
     public void setBookStoreTime(Date bookStoreTime) {
         this.bookStoreTime = bookStoreTime;
+    }
+
+    public Integer getIsHot() {
+        return isHot;
+    }
+
+    public void setIsHot(Integer isHot) {
+        this.isHot = isHot;
     }
 
     @Override

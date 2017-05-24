@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <script type="text/javascript">
-    window.location = "${bsw}/bs/home";
+    window.location = "${bsw}/bs/index";
 </script>
 <body>
 </body>

@@ -28,6 +28,12 @@ public interface UserRoleService extends BaseDAO<UserRole> {
      */
     List<Map<String, Object>> listUsersByRoleId(Integer pageNum, Long roleId, String keys);
 
+    /**
+     * 该角色下用户的总数量
+     * @param roleId
+     * @param keys
+     * @return
+     */
     int countUsersByRoleId(Long roleId, String keys);
 
     /**
@@ -35,4 +41,10 @@ public interface UserRoleService extends BaseDAO<UserRole> {
      * @param roleId
      */
     void deleteUserRoleByRoleId(Long roleId);
+
+    /**
+     * 根据用户id删除用户角色
+     * @param userId
+     */
+    void deleteUserRoleByUserId(Long userId);
 }

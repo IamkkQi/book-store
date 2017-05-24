@@ -6,6 +6,7 @@ import com.bs.pojo.RolePermission;
 import com.bs.service.RolePermissionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -24,6 +25,9 @@ public class RolePermissionServiceImpl extends BaseDAOImpl<RolePermission> imple
     @Override
     public List<String> listPermissionNameByRoleIds(List<Long> roleIds) {
         String sql = "SELECT p.permissionName FROM bs_permission p LEFT JOIN bs_role_permission rp ON rp.permissionId = p.id WHERE rp.roleId IN :ids";
+        if (roleIds == null || roleIds.size() == 0) {
+            return getSession().createSQLQuery("SELECT p.permissionName FROM bs_permission p LEFT JOIN bs_role_permission rp ON rp.permissionId = p.id WHERE rp.roleId IN ('')").list();
+        }
         return getSession().createSQLQuery(sql).setParameterList("ids", roleIds).list();
     }
 

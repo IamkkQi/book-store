@@ -31,7 +31,7 @@
         <div style="float: right">
             <button class="btn btn-info" data-toggle="modal" data-target="#AModal" style="margin-left:10px; float: right;">添加角色</button>
             <div class="input-group col-md-3" style="margin-bottom:10px; position: relative;float: right;">
-                <input type="text" class="form-control" placeholder="角色名称" />
+                <input type="text" class="form-control" placeholder="角色名称" value="${keys}" />
                 <span class="input-group-btn">
                     <button class="btn btn-info" id="sea-btn">搜索</button>
                 </span>
@@ -326,6 +326,10 @@
     $("#E-btn").click(function () {
         $("#EModal").modal('hide');
         location.href = "${backstage}/admin/role/deleteRole/" + $(this).prev().prev().val();
+    });
+    // 查看角色下的用户
+    $(".detailsRole").click(function () {
+        location.href = "${backstage}/admin/role/userWithRole?rid=" + $(this).data("rid");
     });
 
     $(function () {

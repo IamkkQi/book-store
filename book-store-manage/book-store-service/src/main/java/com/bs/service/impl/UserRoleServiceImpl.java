@@ -31,12 +31,13 @@ public class UserRoleServiceImpl extends BaseDAOImpl<UserRole> implements UserRo
     public List<Map<String, Object>> listUsersByRoleId(Integer pageNum, Long roleId, String keys) {
         String sqlKeys = "";
         if (!StringUtils.isEmpty(keys)) {
-            sqlKeys = "AND (u.userName LIKE '%" + keys + "%' OR u.tel LIKE '%" + keys + "%')";
+            sqlKeys = "AND (u.userName LIKE '%" + keys + "%' OR u.tel LIKE '%" + keys + "%') ";
         }
-        String sql = "SELECT u.*,r.roleName FROM bs_user u LEFT JOIN bs_user_role ur ON ur.userId = u.id "
-                + " LEFT JOIN bs_role r ON r.id = ur.roleId "
-                + " WHERE ur.roleId = ? " + sqlKeys + "ORDER BY ur.id DESC "
-                + " LIMIT " + (pageNum - 1) * Constants.PAGE_SIZE + ", " + Constants.PAGE_SIZE;
+        String sql = "SELECT u.id AS userId, u.userName, u.tel, r.id AS roleId, r.roleName, ur.createTime FROM bs_user u "
+                    + " LEFT JOIN bs_user_role ur ON ur.userId = u.id "
+                    + " LEFT JOIN bs_role r ON r.id = ur.roleId "
+                    + " WHERE ur.roleId = ? " + sqlKeys + "ORDER BY ur.id DESC "
+                    + " LIMIT " + (pageNum - 1) * Constants.PAGE_SIZE + ", " + Constants.PAGE_SIZE;
         return getSession().createSQLQuery(sql).setParameter(0, roleId).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
     }
 
@@ -44,7 +45,7 @@ public class UserRoleServiceImpl extends BaseDAOImpl<UserRole> implements UserRo
     public int countUsersByRoleId(Long roleId, String keys) {
         String sqlKeys = "";
         if (!StringUtils.isEmpty(keys)) {
-            sqlKeys = "AND (u.userName LIKE '%" + keys + "%' OR u.tel LIKE '%" + keys + "%')";
+            sqlKeys = "AND (u.userName LIKE '%" + keys + "%' OR u.tel LIKE '%" + keys + "%') ";
         }
         String sql = "SELECT COUNT(u.id) FROM bs_user u LEFT JOIN bs_user_role ur ON ur.userId = u.id "
                 + " LEFT JOIN bs_role r ON r.id = ur.roleId WHERE ur.roleId = ? " + sqlKeys;
@@ -55,6 +56,11 @@ public class UserRoleServiceImpl extends BaseDAOImpl<UserRole> implements UserRo
     @Override
     public void deleteUserRoleByRoleId(Long roleId) {
         getSession().createSQLQuery("DELETE FROM bs_user_role WHERE roleId = ?").setParameter(0, roleId).executeUpdate();
+    }
+
+    @Override
+    public void deleteUserRoleByUserId(Long userId) {
+        getSession().createSQLQuery("DELETE FROM bs_user_role WHERE userId = ?").setParameter(0, userId).executeUpdate();
     }
 
 }

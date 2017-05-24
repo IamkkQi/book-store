@@ -17,3 +17,18 @@
 .remember {
     margin-top: -10px;
 }
+
+.login-err-msg {
+    height: 35px;
+    width: 335px;
+    background-color: #dd4b39;
+    color: #FFF;
+    font-size: 14px;
+    text-align: center;
+    line-height: 35px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    visibility: hidden;
+    margin-left: -167px;
+}

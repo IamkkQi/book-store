@@ -19,6 +19,9 @@
     <jsp:include page="${backstage}/WEB-INF/backstage/include/javascript.jsp"></jsp:include>
     <script src="${backstage}/static/adminLTE-2.3.11/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
     <script src="${backstage}/static/adminLTE-2.3.11/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+    <script src="${backstage}/static/jquery-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+    <script src="${backstage}/static/jquery-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
+    <script src="${backstage}/static/jquery-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
 </head>
 <body>
     <section class="content-header">
@@ -228,12 +231,14 @@
 
                 <div class="basic-info-content">
                     <ul class="basic-info-img">
-                        <li>
-                            <img src="/static/img/001-bg.jpg" />
-                        </li>
+                        <c:forEach items="${images}" var="image">
+                            <li>
+                                <img src="${image.url}" data-bid="${book.id}" />
+                            </li>
+                        </c:forEach>
                         <li class="add-img">
-                            <label for="addImg" class="icon-img"><i class="fa fa-plus"></i></label>
-                            <input multiple="multiple" class="input-img" type="file" name="" id="addImg" value="" onchange="" />
+                            <label for="addImage" class="icon-img"><i class="fa fa-plus"></i></label>
+                            <input class="input-img" type="file" name="bookImage" id="addImage" data-bid="${book.id}" />
                         </li>
                     </ul>
                 </div>
@@ -274,6 +279,11 @@
             </div>
         </div>
     </section>
+
+    <!--大图预览-->
+    <div class="bigImg">
+        <img src="" alt="" />
+    </div>
 
     <%-- 编辑基本信息 --%>
     <div class="modal fade" id="AModal" role="dialog" aria-labelledby="AModalLabel" aria-hidden="true">
@@ -450,6 +460,47 @@
 
 <script type="text/javascript">
 
+    $(function () {
+        initImgSize();
+
+        // 文件异步上传
+        $('#addImage').fileupload({
+            url:'${backstage}/admin/book/uploadPicture',
+            dataType: 'json',
+            autoUpload: true,
+            formData:{'bookId':$('#addImage').data('bid')},
+            done: function(e, data){
+                alert(data.result.message);
+                $(this).parent().before('<li><img src="' + data.result.url + '" data-bid="' + data.result.bookId + '"/></li>');
+                initImgSize();
+            },
+            fail: function(e, data) {
+                alert(data.result.message);
+            }
+        });
+    });
+
+
+    // 初始化图片大小方法
+    function initImgSize() {
+        var h, w, h1, w1, s;
+        $(".basic-info-img li img").each(function() {
+            h = $(this).height();
+            w = $(this).width();
+            if(h > w) {
+                s = h;
+                $(this).width(80);
+                h1 = $(this).height();
+                $(this).css("marginTop", (80 - h1) / 2);
+            } else {
+                s = w;
+                $(this).height(80);
+                w1 = $(this).width();
+                $(this).css("marginLeft", (80 - w1) / 2);
+            }
+        });
+    }
+
     $('.form_date-bookPubTime').datetimepicker({
         format: 'yyyy-mm-dd',
         language: 'zh-CN',
@@ -487,5 +538,24 @@
         $("#BModal").modal("hide");
         $("#KCForm").submit();
     });
+
+    // 大图预览
+    $("body").delegate(".basic-info-img li img","click",function () {
+        $(".bigImg img").attr("src",$(this).attr("src"));
+        $(".bigImg").show();
+        $("body").addClass("btnActive");
+    });
+    $(".basic-info-img li img").click(function () {
+        $(".bigImg img").attr("src",$(this).attr("src"));
+        $(".bigImg").fadeIn();
+        $("body").addClass("btnActive");
+    });
+    $(".bigImg").click(function () {
+        $("body").removeClass("btnActive");
+        $(".bigImg img").attr("src","");
+        $(".bigImg").fadeOut();
+    });;
+
+
 </script>
 </html>

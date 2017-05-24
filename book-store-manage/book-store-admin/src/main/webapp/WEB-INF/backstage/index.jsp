@@ -58,18 +58,90 @@
             <ul class="sidebar-menu">
                 <li class="header">主菜单</li>
                 <c:forEach items="${menus}" var="menu">
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="${menu.icon}"></i>
-                            <span>${menu.menuName}</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <c:forEach items="${menu.twoMenus}" var="tm">
-                                <li><a href="${tm.url}" target="main-content"><i class="${tm.icon}"></i>${tm.menuName}</a></li>
-                            </c:forEach>
-                        </ul>
-                    </li>
+                    <c:if test="${menu.menuName == '用户管理'}">
+                        <shiro:hasPermission name="user:user">
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="${menu.icon}"></i>
+                                    <span>${menu.menuName}</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <c:forEach items="${menu.twoMenus}" var="tm">
+                                        <li><a href="${tm.url}" target="main-content"><i class="${tm.icon}"></i>${tm.menuName}</a></li>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                        </shiro:hasPermission>
+                    </c:if>
+
+                    <c:if test="${menu.menuName == '图书管理'}">
+                        <shiro:hasPermission name="book:book">
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="${menu.icon}"></i>
+                                    <span>${menu.menuName}</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <c:forEach items="${menu.twoMenus}" var="tm">
+                                        <li><a href="${tm.url}" target="main-content"><i class="${tm.icon}"></i>${tm.menuName}</a></li>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                        </shiro:hasPermission>
+                    </c:if>
+
+                    <c:if test="${menu.menuName == '类别管理'}">
+                        <shiro:hasPermission name="category:category">
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="${menu.icon}"></i>
+                                    <span>${menu.menuName}</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <c:forEach items="${menu.twoMenus}" var="tm">
+                                        <li><a href="${tm.url}" target="main-content"><i class="${tm.icon}"></i>${tm.menuName}</a></li>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                        </shiro:hasPermission>
+                    </c:if>
+
+                    <c:if test="${menu.menuName == '控制面板'}">
+                        <shiro:hasPermission name="control:control">
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="${menu.icon}"></i>
+                                    <span>${menu.menuName}</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <c:forEach items="${menu.twoMenus}" var="tm">
+                                        <li><a href="${tm.url}" target="main-content"><i class="${tm.icon}"></i>${tm.menuName}</a></li>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                        </shiro:hasPermission>
+                    </c:if>
+
+                    <c:if test="${menu.menuName == '订单管理'}">
+                        <shiro:hasPermission name="order:order">
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="${menu.icon}"></i>
+                                    <span>${menu.menuName}</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <c:forEach items="${menu.twoMenus}" var="tm">
+                                        <li><a href="${tm.url}" target="main-content"><i class="${tm.icon}"></i>${tm.menuName}</a></li>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                        </shiro:hasPermission>
+                    </c:if>
                 </c:forEach>
             </ul>
         </section>
