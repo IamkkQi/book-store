@@ -50,7 +50,8 @@ public class BookServiceImpl extends BaseDAOImpl<Book> implements BookService {
 
     @Override
     public Map<String, Object> getBooksDetailsById(Long bid) {
-        String sql = "SELECT b.*, c.categoryName FROM bs_book b LEFT JOIN bs_category c ON c.id = b.categoryId WHERE b.id = ?";
+        String sql = "SELECT b.*, c.categoryName,(SELECT i.url FROM bs_image i WHERE i.fkId = b.id AND i.type = 1 LIMIT 0,1) AS imgUrl "
+                + " FROM bs_book b LEFT JOIN bs_category c ON c.id = b.categoryId WHERE b.id = ?";
         return (Map<String, Object>) getSession().createSQLQuery(sql).setParameter(0, bid).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).uniqueResult();
     }
 
@@ -62,6 +63,23 @@ public class BookServiceImpl extends BaseDAOImpl<Book> implements BookService {
         sb.append("FROM bs_book b ");
         sb.append("LEFT JOIN bs_category c ON c.id = b.categoryId ");
         sb.append("WHERE b.isDel = 0 AND b.status = 1 AND b.isHot = 1 ORDER BY b.updateTime DESC ");
+        return getSession().createSQLQuery(sb.toString()).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+    }
+
+    @Override
+    public List<Map<String, Object>> listBooks(Long categoryId) {
+        String sqlCategory = "";
+        if (categoryId != null) {
+            sqlCategory = " AND b.categoryId = " + categoryId;
+        }
+        StringBuffer sb = new StringBuffer();
+        sb.append("SELECT b.*,c.categoryName, ");
+        sb.append("(SELECT i.url FROM bs_image i WHERE i.fkId = b.id LIMIT 0,1) AS imgUrl ");
+        sb.append("FROM bs_book b ");
+        sb.append("LEFT JOIN bs_category c ON c.id = b.categoryId ");
+        sb.append("WHERE b.isDel = 0 AND b.status = 1 ");
+        sb.append(sqlCategory);
+        sb.append(" ORDER BY b.updateTime DESC ");
         return getSession().createSQLQuery(sb.toString()).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
     }
 }

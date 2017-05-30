@@ -50,6 +50,12 @@ public class CategoryServiceImpl extends BaseDAOImpl<Category> implements Catego
     }
 
     @Override
+    public List<Map<String, Object>> listParentCategories() {
+        String sql = "SELECT * FROM bs_category c WHERE c.isDel = 0 AND c.level = 1";
+        return getSession().createSQLQuery(sql).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+    }
+
+    @Override
     public List<Category> listCategoriesByParentId(Long pid) {
         String hql = "FROM Category WHERE isDel = 0 AND parentId = ?";
         return getSession().createQuery(hql).setParameter(0, pid).list();

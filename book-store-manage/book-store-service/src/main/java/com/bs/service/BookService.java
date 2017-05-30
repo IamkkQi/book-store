@@ -38,4 +38,6 @@ public interface BookService extends BaseDAO<Book> {
      * @return
      */
     List<Map<String, Object>> listBooksWithHot();
+
+    List<Map<String, Object>> listBooks(Long categoryId);
 }

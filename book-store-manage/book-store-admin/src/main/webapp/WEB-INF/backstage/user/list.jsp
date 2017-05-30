@@ -120,21 +120,18 @@
                     <form class="form-horizontal" action="${backstage}/admin/user/saveUser" method="post" id="addForm">
                         <div class="form-group">
                             <label for="userName" class="col-sm-4 control-label">用户名:</label>
-
                             <div class="col-sm-6">
                                 <input type="text" name="userName" class="form-control" id="userName" placeholder="请输入用户名">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="nickName" class="col-sm-4 control-label">昵称:</label>
-
                             <div class="col-sm-6">
                                 <input type="text" name="nickName" class="form-control" id="nickName" placeholder="请输入昵称">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="tel" class="col-sm-4 control-label">手机号:</label>
-
                             <div class="col-sm-6">
                                 <input type="text" name="tel" class="form-control" id="tel" placeholder="请输入手机号">
                             </div>
@@ -152,7 +149,6 @@
 
                         <div class="form-group">
                             <label class="col-sm-4 control-label">出生日期:</label>
-
                             <div class="col-sm-6">
                                 <div class="input-group date">
                                     <div class="input-group-addon">
@@ -165,7 +161,6 @@
 
                         <div class="form-group">
                             <label for="idCard" class="col-sm-4 control-label">身份证号:</label>
-
                             <div class="col-sm-6">
                                 <input type="text" name="idCard" class="form-control" id="idCard" placeholder="请输入身份证号">
                             </div>
@@ -204,7 +199,6 @@
 
                         <div class="form-group">
                             <label for="occupation" class="col-sm-4 control-label">职业:</label>
-
                             <div class="col-sm-6">
                                 <input type="text" name="occupation" class="form-control" id="occupation" placeholder="学生/老师/程序员">
                             </div>

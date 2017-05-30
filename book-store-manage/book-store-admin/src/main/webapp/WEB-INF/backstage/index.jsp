@@ -109,7 +109,7 @@
                         </shiro:hasPermission>
                     </c:if>
 
-                    <c:if test="${menu.menuName == '控制面板'}">
+                    <c:if test="${menu.menuName == '系统管理'}">
                         <shiro:hasPermission name="control:control">
                             <li class="treeview">
                                 <a href="#">

@@ -27,7 +27,7 @@
         <div style="float: right">
             <button class="btn btn-info" data-toggle="modal" data-target="#AModal" style="margin-left:10px; float: right;">添加类别</button>
             <div class="input-group col-md-3" style="margin-bottom:10px; position: relative;float: right;">
-                <input type="text" class="form-control" placeholder="类名" />
+                <input type="text" class="form-control" value="${keys}" placeholder="类别名称" />
                 <span class="input-group-btn">
                     <button class="btn btn-info" id="sea-btn">搜索</button>
                 </span>

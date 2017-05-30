@@ -21,4 +21,11 @@
         <!-- 定义文件上传的最大值5MB 5*1024*1024 -->
         <property name="maxUploadSize" value="22242880"/>
     </bean>
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/bs/cart/**"/>
+            <bean id="loginInterceptor" class="com.bs.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

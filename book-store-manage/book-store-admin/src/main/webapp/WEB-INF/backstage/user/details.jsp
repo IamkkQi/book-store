@@ -269,8 +269,8 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label">籍贯:</label>
                             <div class="col-sm-6" data-toggle="distpicker" id="address">
-                                <select name="province" class="form-control" style="width: 49%; float: left; margin-right: 2%;"></select>
-                                <select name="city" class="form-control" style="width: 49%; float: left"></select>
+                                <select name="province" id="province" class="form-control" style="width: 49%; float: left; margin-right: 2%;"></select>
+                                <select name="city" id="city" class="form-control" style="width: 49%; float: left"></select>
                             </div>
                         </div>
 
@@ -345,12 +345,11 @@
     
     $(function () {
         initImgSize();
-        // alert("${u.province}" == '' ? '—— 省 ——' : "${u.province}");
-        // 籍贯
-        $('#address').distpicker({
-            province: ("${u.province}" == '' ? '—— 省 ——' : "${u.province}"),
-            city: ("${u.city}" == '' ? '—— 市  ——' : "${u.city}"),
-        });
+
+        $("#province").val("${u.province}");
+        $("#province").trigger("change");
+        $("#city").val("${u.city}");
+        $("#city").trigger("change");
 
     });
 

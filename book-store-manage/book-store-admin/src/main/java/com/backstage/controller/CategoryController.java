@@ -32,6 +32,7 @@ public class CategoryController {
         model.addAttribute("pageBean", pageBean);
         List<Category> oneCategories = categoryService.listCategoriesByLevel(1);
         model.addAttribute("oneCategories", oneCategories);
+        model.addAttribute("keys", keys);
         return "category/list";
     }
 

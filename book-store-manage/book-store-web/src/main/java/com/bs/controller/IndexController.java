@@ -1,11 +1,12 @@
 package com.bs.controller;
 
+import com.bs.pojo.Category;
 import com.bs.pojo.User;
 import com.bs.service.BookService;
+import com.bs.service.CategoryService;
 import com.bs.service.UserService;
 import com.bs.util.CookieUtil;
 import com.bs.utils.VerifyCodeUtils;
-import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,6 +38,8 @@ public class IndexController {
     private UserService userService;
     @Resource
     private BookService bookService;
+    @Resource
+    private CategoryService categoryService;
 
     private static Logger logger = LoggerFactory.getLogger(IndexController.class);
 
@@ -43,6 +47,12 @@ public class IndexController {
     public String index(Model model) {
         logger.info("----------------index----------------");
         model.addAttribute("books", bookService.listBooksWithHot());
+        List<Map<String, Object>> categories = categoryService.listParentCategories();
+        for (Map<String, Object> c : categories) {
+            List<Category> subCategories = categoryService.listCategoriesByParentId(Long.valueOf(c.get("id").toString()));
+            c.put("subCategories", subCategories);
+        }
+        model.addAttribute("categories", categories);
         return "index";
     }
 

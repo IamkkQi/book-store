@@ -34,6 +34,12 @@ public interface CategoryService extends BaseDAO<Category> {
     int countAllCategories(String keys);
 
     /**
+     * 查询所有父类分类
+     * @return
+     */
+    List<Map<String, Object>> listParentCategories();
+
+    /**
      * 根据父id查询所有分类
      * @param pid
      * @return

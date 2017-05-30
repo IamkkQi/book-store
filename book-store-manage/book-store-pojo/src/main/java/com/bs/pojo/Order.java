@@ -45,6 +45,8 @@ public class Order implements Serializable {
     private Date deleteTime;
     // 是否删除
     private Integer isDel = 0;
+    // 图书信息
+    private String bookInfos;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -182,6 +184,14 @@ public class Order implements Serializable {
 
     public void setIsDel(Integer isDel) {
         this.isDel = isDel;
+    }
+
+    public String getBookInfos() {
+        return bookInfos;
+    }
+
+    public void setBookInfos(String bookInfos) {
+        this.bookInfos = bookInfos;
     }
 
     @Override

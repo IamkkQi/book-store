@@ -31,7 +31,6 @@ public class User implements Serializable {
     private Integer loginStatus; // 登录状态
     private Date lastAccessTime; // 最后访问时间
     private String userIp; // 用户ip
-    private String salt; // 盐
     private String nation; // 民族
     private String occupation; // 职业
     private String idCard; // 身份证
@@ -190,14 +189,6 @@ public class User implements Serializable {
         this.userIp = userIp;
     }
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
     public String getNation() {
         return nation;
     }
@@ -244,7 +235,6 @@ public class User implements Serializable {
                 ", loginStatus=" + loginStatus +
                 ", lastAccessTime=" + lastAccessTime +
                 ", userIp='" + userIp + '\'' +
-                ", salt='" + salt + '\'' +
                 ", nation='" + nation + '\'' +
                 ", occupation='" + occupation + '\'' +
                 ", idCard='" + idCard + '\'' +
