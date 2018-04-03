@@ -162,4 +162,11 @@ public class IndexController {
         }
         return result;
     }
+
+    @RequestMapping("registerUI")
+    public String registerUI() {
+        logger.info("------------register--------------");
+        return "register";
+    }
+
 }

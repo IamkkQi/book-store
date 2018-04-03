@@ -103,7 +103,7 @@
 									</div>
 								</td>
 								<td data-bp="${cart.bookPrice}">￥${cart.bookPrice}</td>
-								<td>
+								<td data-bid="${cart.id}">
 									<input type="button" value="-" onclick="disNum(this)" style="width: 24px;"/><input id="num2"
 																													   value="<c:if test="${empty cart.num}">0</c:if><c:if test="${not empty cart.num}">${cart.num}</c:if>" type="text"
 																													   style="width: 36px; text-align: center;margin-left: -2px; margin-right: -2px;"><input type="button" value="+" onclick="incNum(this)" style="width: 24px;"/>
@@ -159,9 +159,7 @@
 		</div>
 	</div>
 
-
-	<div style="margin-top: 80px;">
-	</div>
+	<div style="margin-top: 80px;"></div>
 
 	<footer class="footer navbar-fixed-bottom">
 		<div class="container">
@@ -177,10 +175,11 @@
         $(dom).next().val(parseInt($(dom).next().val()) - 1);
         // 合计
         var total_price = $(dom).next().val() * $(dom).parent().prev().data("bp");
-        $(dom).parent().next().find('.total_price').val($(dom).next().val() * total_price);
+        $(dom).parent().next().find('.total_price').val($(dom).next().val()*  total_price);
         $(dom).parent().next().html("￥" + total_price
             + '<input type="hidden" value="'+ total_price +'" class="total_price">');
         cartTotal();
+        changeNum($(dom).parent().data('bid'), $(dom).next().val());
     }
     function incNum(dom){
         $(dom).prev().val(parseInt($(dom).prev().val()) + 1);
@@ -188,6 +187,7 @@
         $(dom).parent().next().html("￥" + total_price
             + '<input type="hidden" value="'+ total_price +'" class="total_price">');
         cartTotal();
+        changeNum($(dom).parent().data('bid'), $(dom).prev().val());
     }
 
     // 全选按钮
@@ -283,5 +283,13 @@
             alert("请选择要结算的商品");
         }
     });
+
+    function changeNum(bid, num) {
+        $.getJSON("${bsw}/bs/cart/addNum", {'bid':bid,'num':num}, function(data){
+            if(data.msg == "no") {
+                alert("添加失败");
+            }
+        });
+    }
 </script>
 </html>

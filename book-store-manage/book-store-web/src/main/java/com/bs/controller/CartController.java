@@ -10,9 +10,7 @@ import com.bs.pojo.User;
 import com.bs.service.BookService;
 import com.bs.service.OrderService;
 import com.bs.service.ReceivingAddressService;
-import com.bs.util.CollectionVO;
 import com.bs.utils.string.StringUtil;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -48,7 +46,6 @@ public class CartController {
     public Object addCart(HttpSession session, Long bookId) {
         // 返回信息
         Map<String, Object> resultMap = new HashMap<>();
-        // ook book = bookService.getById(bookId);
         // 创建购物车
         Map<String, Object> cart;
         // 获取session中的购物车
@@ -151,6 +148,21 @@ public class CartController {
             resultMap.put("flag", "yes");
         } catch (Exception e) {
             resultMap.put("flag", "no");
+            e.printStackTrace();
+        }
+        return resultMap;
+    }
+
+    @RequestMapping("addNum")
+    @ResponseBody
+    public Object addNum(HttpSession session, Long bid, int num) {
+        Map<String, Object> resultMap = new HashMap<>();
+        try {
+            Map<String, Object> cart = (Map<String, Object>) session.getAttribute("cart");
+            cart.put(bid.toString(), num);
+            resultMap.put("msg", "yes");
+        } catch (Exception e) {
+            resultMap.put("msg", "no");
             e.printStackTrace();
         }
         return resultMap;
@@ -324,6 +336,11 @@ public class CartController {
         return "cart/myOrder";
     }
 
+    /**
+     * 删除订单
+     * @param oid
+     * @return
+     */
     @RequestMapping("delOrder/{oid}")
     public String delOrder(@PathVariable("oid") Long oid) {
         Order order = orderService.getById(oid);
@@ -333,6 +350,13 @@ public class CartController {
         return "redirect:/bs/cart/myOrder";
     }
 
+    /**
+     * 取消订饭
+     * @param oid
+     * @param status
+     * @param description
+     * @return
+     */
     @RequestMapping("cancelOrder")
     public String cancelOrder(Long oid, Integer status, String description) {
         Order order = orderService.getById(oid);
@@ -343,6 +367,12 @@ public class CartController {
         return "redirect:/bs/index";
     }
 
+    /**
+     * 完成订单
+     * @param oid
+     * @param status
+     * @return
+     */
     @RequestMapping("completeOrder")
     public String completeOrder(Long oid, Integer status) {
         Order order = orderService.getById(oid);

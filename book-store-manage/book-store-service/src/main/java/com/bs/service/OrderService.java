@@ -18,5 +18,25 @@ public interface OrderService extends BaseDAO<Order> {
      */
     List<Map<String, Object>> listByUserId(Integer pageNum, Long userId);
 
+    /**
+     * 用户订单总数
+     * @param userId
+     * @return
+     */
     int countByUserId(Long userId);
+
+    /**
+     * 查询订单
+     * @param pageNum
+     * @param keys
+     * @return
+     */
+    List<Map<String, Object>> listOrders(Integer pageNum, String keys);
+
+    /**
+     * 订单总数
+     * @param keys
+     * @return
+     */
+    int countOrders(String keys);
 }

@@ -82,4 +82,21 @@ public class BookServiceImpl extends BaseDAOImpl<Book> implements BookService {
         sb.append(" ORDER BY b.updateTime DESC ");
         return getSession().createSQLQuery(sb.toString()).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
     }
+
+    @Override
+    public List<Map<String, Object>> listByKeys(String keys) {
+        String sqlKeys = "";
+        if(!StringUtils.isEmpty(keys)) {
+            sqlKeys = " AND (b.bookName LIKE '%" + keys + "%' OR b.bookAuthor LIKE '%" + keys + "%') ";
+        }
+
+        StringBuffer sb = new StringBuffer();
+        sb.append("SELECT b.*,c.categoryName,");
+        sb.append("(SELECT i.url FROM bs_image i WHERE i.fkId = b.id LIMIT 0,1) AS imgUrl ");
+        sb.append("FROM bs_book b ");
+        sb.append("LEFT JOIN bs_category c ON c.id = b.categoryId ");
+        sb.append("WHERE b.isDel = 0 AND b.status = 1 " + sqlKeys);
+        sb.append("ORDER BY b.updateTime");
+        return getSession().createSQLQuery(sb.toString()).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+    }
 }

@@ -35,11 +35,11 @@ public class CommonsController {
         if ("role".equals(type)) {
             Role role = roleService.getRoleByRoleName(field);
             if ((role == null) || (role != null && id != null && id - role.getId() == 0)) {
-                result .put("valid", true);
+                result.put("valid", true);
             }
 
             if(role != null && id != null && role.getId() - id != 0) {
-                result .put("valid", false);
+                result.put("valid", false);
             }
         }
         return result;

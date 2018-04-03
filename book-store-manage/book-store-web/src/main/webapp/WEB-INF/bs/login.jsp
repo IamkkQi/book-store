@@ -49,7 +49,7 @@
 			<button type="button" class="btn btn-primary btn-block btn-lg" id="btn-login" style="margin-bottom: 10px;">登录</button>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-4">
-					<p><a href="#" >注册</a></p>
+					<p><a href="${bsw}/bs/registerUI">注册</a></p>
 				</div>
 				<div class="col-sm-6">
 					<p><a href="#">忘记密码？</a></p>

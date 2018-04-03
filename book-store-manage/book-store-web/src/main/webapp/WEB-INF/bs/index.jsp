@@ -39,6 +39,7 @@
 		.navigation {
 			border-bottom:2px solid #5050ff;
 		}
+
 	</style>
 </head>
 <body>
@@ -55,7 +56,7 @@
 						</c:when>
 						<c:otherwise>
 							<li><a href="${bsw}/bs/loginUI">登录</a></li>
-							<li><a href="#">注册</a></li>
+							<li><a href="${bsw}/bs/registerUI">注册</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
@@ -74,9 +75,11 @@
 			</div>
 			<div class="col-md-6 col">
 				<div class="input-group">
-					<input type="text" class="form-control input-lg" placeholder="请输入书名">
-					<a class="input-group-addon btn btn-default" style="background: #3c78b4;color: #fff;">搜索</a>
-				</div>  
+					<form action="${bsw}/bs/book/searchBooks" target="main-content" method="post" id="searchForm">
+						<input type="text" class="form-control input-lg" name="keys" id="keys" placeholder="请输入书名或作者">
+					</form>
+					<a class="input-group-addon btn btn-default" style="background: #3c78b4;color: #fff;" id="search_book">搜索</a>
+				</div>
 			</div>
 
 			<%--<div class="col-md-2 col">
@@ -99,7 +102,7 @@
 					<li class="divider"></li>
 					<c:forEach items="${categories}" var="c">
 						<li class="dropdown-submenu"><a tabindex="0" href="#" data-cid="${c.id}">${c.categoryName}</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu" style="top: 0;left: 100%;margin-top: -6px;border-top-left-radius: 0;">
 								<c:forEach items="${c.subCategories}" var="sub">
 									<li><a href="${bsw}/bs/book/books?categoryId=${sub.id}" data-cid="${sub.id}" target="main-content" class="shop-category">${sub.categoryName}</a></li>
 								</c:forEach>
@@ -142,5 +145,9 @@
     $(".shop-category").click(function(){
         $("#shop-category").html($(this).text() + '<span class="caret"></span>')
 	});
+
+    $("#search_book").click(function () {
+		$("#searchForm").submit();
+    });
 </script>
 </html>

@@ -122,13 +122,13 @@
                                     <td>￥${b.bookPrice}</td>
                                     <td style="border-right: 1px solid #ddd;">${b.num}</td>
                                     <c:choose>
-                                        <c:when test="${order.rows == i.index + 1}">
+                                        <c:when test="${order.rows == i.index + 1 and order.rows != 1}">
                                             <td rowspan="${order.rows}" style="border-right: 1px solid #ddd;"></td>
                                         </c:when>
                                         <c:otherwise><td style="border-right: 1px solid #ddd;"><c:if test="${i.index == 0}">${order.totalPrice}</c:if></td></c:otherwise>
                                     </c:choose>
                                     <c:choose>
-                                        <c:when test="${order.rows == i.index + 1}">
+                                        <c:when test="${order.rows == i.index + 1 and order.rows != 1}}">
                                             <td rowspan="${order.rows}" style="border-right: 1px solid #ddd;"></td>
                                         </c:when>
                                         <c:otherwise>
